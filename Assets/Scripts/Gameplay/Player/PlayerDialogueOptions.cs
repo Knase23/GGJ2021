@@ -6,10 +6,10 @@ namespace Game.Gameplay.Player
 {
     public class PlayerDialogueOptions : MonoBehaviour, IHearing, ITalker
     {
-        public List<Hierogplyph> knownGlyphs = new List<Hierogplyph>();
+        public List<Hieroglyph> knownGlyphs = new List<Hieroglyph>();
 
         public float talkRange = 3;
-        public Hierogplyph latestTalk;
+        public Hieroglyph latestTalk;
 
         private void OnEnable()
         {
@@ -21,14 +21,14 @@ namespace Game.Gameplay.Player
             DialogueSystem.RemoveIHearingToList(this);
         }
 
-        private void LearnNewGlyph(Hierogplyph hieroglyphic)
+        private void LearnNewGlyph(Hieroglyph hieroglyphic)
         {
             if (knownGlyphs.Contains(hieroglyphic))
                 return;
             knownGlyphs.Add(hieroglyphic);
         }
 
-        public void Talk(Hierogplyph hieroglyphic)
+        public void Talk(Hieroglyph hieroglyphic)
         {
             latestTalk = hieroglyphic;
             DialogueSystem.Talking(this);
@@ -41,10 +41,10 @@ namespace Game.Gameplay.Player
 
         public void OnHearing(ITalker talker)
         {
-            LearnNewGlyph(talker.GetLatest());
+            LearnNewGlyph(talker.GetLatestWord());
         }
 
-        public Hierogplyph GetLatest()
+        public Hieroglyph GetLatestWord()
         {
             return latestTalk;
         }

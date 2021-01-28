@@ -38,7 +38,7 @@ namespace Game
 
     public interface ITalker : ILocation
     {
-        Hierogplyph GetLatest();
+        Hieroglyph GetLatestWord();
         float GetTalkRange();
     }
 
