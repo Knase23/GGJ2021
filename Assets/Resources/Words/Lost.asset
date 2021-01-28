@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Word: Lost
   PlayerGuess: 
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: c64289379e19d74498f67674c68b498d, type: 3}
   animation: {fileID: 0}

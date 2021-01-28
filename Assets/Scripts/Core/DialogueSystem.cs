@@ -21,11 +21,19 @@ namespace Game
 
         public static void Talking(ITalker talker)
         {
+            Debug.Log($"{talker.GetName()} is saying:{talker.GetLatestWord()}");
             foreach (IHearing listener in Listeners)
             {
-                if (Vector2.Distance(listener.GetLocation(), talker.GetLocation()) < talker.GetTalkRange())
+                if(talker == listener) continue;
+
+                float distance = Vector2.Distance(listener.GetLocation(), talker.GetLocation());
+                if (distance < talker.GetTalkRange() + 2)
                 {
                     listener.OnHearing(talker);
+                }
+                else
+                {
+                    Debug.Log($"{listener} could not hear {talker.GetName()}: Distance was: {distance}");
                 }
             }
         }
@@ -40,6 +48,9 @@ namespace Game
     {
         Hieroglyph GetLatestWord();
         float GetTalkRange();
+        void Talk();
+        void Talk(Hieroglyph word);
+        string GetName();
     }
 
     public interface ILocation

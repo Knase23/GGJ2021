@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Game.Gameplay.Player
 {
@@ -10,6 +12,8 @@ namespace Game.Gameplay.Player
 
         public float talkRange = 3;
         public Hieroglyph latestTalk;
+
+        public UnityEvent<PlayerDialogueOptions> onLearnNewGlyph = new UnityEvent<PlayerDialogueOptions>();
 
         private void OnEnable()
         {
@@ -25,13 +29,27 @@ namespace Game.Gameplay.Player
         {
             if (knownGlyphs.Contains(hieroglyphic))
                 return;
+            
             knownGlyphs.Add(hieroglyphic);
+            onLearnNewGlyph?.Invoke(this);
+            Debug.Log("Learned new Glyph");
+        }
+
+        public void Talk()
+        {
+            Talk(latestTalk);
         }
 
         public void Talk(Hieroglyph hieroglyphic)
         {
+            
             latestTalk = hieroglyphic;
             DialogueSystem.Talking(this);
+        }
+
+        public string GetName()
+        {
+            return "Player";
         }
 
         public Vector2 GetLocation()
@@ -56,7 +74,7 @@ namespace Game.Gameplay.Player
 
         private void OnDrawGizmosSelected()
         {
-            Gizmos.DrawWireSphere(transform.position,talkRange);
+            Gizmos.DrawWireSphere(transform.position, talkRange);
         }
     }
 }
