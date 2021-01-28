@@ -16,7 +16,7 @@ MonoBehaviour:
   expectedResponse:
   - responseWord: {fileID: 11400000, guid: 8aa75f2058bc44e4d9811c246218cc38, type: 2}
     nextBehaviour: {fileID: 11400000, guid: cc1b0ed3d024c9d46b76e9b6af292566, type: 2}
-    OnResponse: -1
+    OnResponse: 0
   unxpectedResponse:
     responseWord: {fileID: 0}
     nextBehaviour: {fileID: 11400000}

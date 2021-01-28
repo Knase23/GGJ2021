@@ -29,8 +29,12 @@ namespace Game.Gameplay.AI
             foreach (BehaviourChange behaviourChange in expectedResponse)
             {
                 if (behaviourChange.responseWord == word)
+                {
+                    Debug.Log("Expected Response");
                     return behaviourChange;
+                }
             }
+            Debug.Log("No Expected Response found");
             return unxpectedResponse;
         }
         

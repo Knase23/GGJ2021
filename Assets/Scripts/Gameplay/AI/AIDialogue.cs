@@ -15,11 +15,21 @@ namespace Game.Gameplay.AI
 
         public List<UnityEvent> actions = new List<UnityEvent>();
 
-        private AiBehaviour currentAiBehaviour;
+        public AiBehaviour currentAiBehaviour;
 
         private void Start()
         {
             currentAiBehaviour = FirstBehaviour;
+        }
+
+        private void OnEnable()
+        {
+            DialogueSystem.AddIHearingToList(this);
+        }
+
+        private void OnDisable()
+        {
+            DialogueSystem.AddIHearingToList(this);
         }
 
         public Vector2 GetLocation()
@@ -29,12 +39,16 @@ namespace Game.Gameplay.AI
 
         public void OnHearing(ITalker talker)
         {
-            Hieroglyph talkerWord = talker.GetLatestWord();
-            AiBehaviour.BehaviourChange changeInBehaviour = currentAiBehaviour.GetResponse(talkerWord);
-            if(changeInBehaviour.OnResponse > 0 && changeInBehaviour.OnResponse < actions.Count)
+            Debug.Log($"Heard {talker.GetName()} say: {talker.GetLatestWord()}");
+            
+            Hieroglyph talkerWord = talker.GetLatestWord(); // Get what it said
+            AiBehaviour.BehaviourChange changeInBehaviour = currentAiBehaviour.GetResponse(talkerWord); // Check how we react
+            
+            if(changeInBehaviour.OnResponse > -1 && changeInBehaviour.OnResponse < actions.Count) // Check if their is a action relate
                 actions[changeInBehaviour.OnResponse]?.Invoke();
 
-            currentAiBehaviour = changeInBehaviour.nextBehaviour;
+            currentAiBehaviour = changeInBehaviour.nextBehaviour;// Change our behavoior to next one!
+            Talk();
         }
 
         public void Talk()
@@ -46,9 +60,13 @@ namespace Game.Gameplay.AI
         {
             _latestGlyph = word;
             DialogueSystem.Talking(this);
-            Debug.Log($"{name} says {_latestGlyph.Word}");
         }
-        
+
+        public string GetName()
+        {
+            return gameObject.name;
+        }
+
         public Hieroglyph GetLatestWord()
         {
             return _latestGlyph;
