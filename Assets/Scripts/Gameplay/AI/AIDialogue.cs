@@ -53,6 +53,8 @@ namespace Game.Gameplay.AI
 
         public void Talk()
         {
+            
+            
             Talk(currentAiBehaviour.myWord);
         }
         

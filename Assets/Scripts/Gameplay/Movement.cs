@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Game
 {
@@ -10,13 +11,19 @@ namespace Game
     {
         public InputActionReference actionBinding;
         private Rigidbody2D _rigidbody2D;
+        public SpriteRenderer spriteRenderer;
+        
         public float speed = 10;
         private Vector2 inputs => actionBinding.action.ReadValue<Vector2>();
+
+        private Animator _animator;
 
         // Start is called before the first frame update
         void Start()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
+            _animator.SetTrigger("GameHasStarted");
             actionBinding?.action.Enable();
         }
 
@@ -34,13 +41,26 @@ namespace Game
         void Update()
         {
             if (inputs.x > 0)
+            {
                 _rigidbody2D.AddForce(Vector2.right * speed,ForceMode2D.Force);
+                spriteRenderer.flipX = false;
+            }
+
             //transform.position += (Vector3)GroundOffset(Vector3.right) * (speed * Time.deltaTime);
             if (inputs.x < 0)
+            {
                 _rigidbody2D.AddForce(Vector2.left * speed,ForceMode2D.Force);
+                spriteRenderer.flipX = true;
+            }
             
             _rigidbody2D.velocity = Vector2.ClampMagnitude(_rigidbody2D.velocity,speed);
             // transform.position += (Vector3)GroundOffset(Vector3.left) * (speed * Time.deltaTime);
+            
+            if(_rigidbody2D.velocity.magnitude <= 0.5f)
+                _animator.SetBool("Walking",false);
+            else
+                _animator.SetBool("Walking",true);
+
         }
 
         public Vector2 GroundOffset(Vector2 moveDirection)
