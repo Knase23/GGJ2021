@@ -2,7 +2,8 @@
     "name": "GGJProject",
     "rootNamespace": "Game",
     "references": [
-        "GUID:e336ac2618e884d4eab4202d5d7d88d6"
+        "GUID:e336ac2618e884d4eab4202d5d7d88d6",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

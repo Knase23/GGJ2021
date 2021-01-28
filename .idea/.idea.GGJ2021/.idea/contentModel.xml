@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\max\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\max\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_GGJ2021.-1444946486.00" t="ExcludeRecursive" />
-    <e p="C:\Users\max\Documents\UnityProjects\GGJ2021" t="IncludeRecursive">
+    <e p="C:\Users\Jespe\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jespe\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_GGJ2021.-1353331589.00" t="ExcludeRecursive" />
+    <e p="E:\Repository\GGJ2021" t="IncludeRecursive">
       <e p="Assets" t="Include">
+        <e p="Imported" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Borderless" t="Include">
+              <e p="Borderless.asmdef" t="Include" />
+              <e p="BorderlessWindow.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="GameManager.cs" t="Include" />
+          <e p="Gameplay" t="Include">
+            <e p="DialougeOption.cs" t="Include" />
+            <e p="DialougeSystem.cs" t="Include" />
+            <e p="Hierogplyph.cs" t="Include" />
+            <e p="Movement.cs" t="Include" />
+          </e>
           <e p="GGJProject.asmdef" t="Include" />
+          <e p="WindowResizer.cs" t="Include" />
         </e>
       </e>
+      <e p="Borderless.csproj" t="IncludeRecursive" />
       <e p="GGJ2021.sln" t="IncludeFlat" />
       <e p="GGJProject.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />

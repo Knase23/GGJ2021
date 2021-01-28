@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Runtime.InteropServices;
+#pragma warning disable 162
 
 public class BorderlessWindow
 {
