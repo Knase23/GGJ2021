@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 77828636}
   - component: {fileID: 77828638}
   - component: {fileID: 77828637}
+  - component: {fileID: 77828639}
+  - component: {fileID: 77828640}
   m_Layer: 0
   m_Name: TalkAndHearingPoint
   m_TagString: Untagged
@@ -219,6 +221,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talkRange: 10
+  FirstBehaviour: {fileID: 11400000, guid: 7dd967581bb04ef4585f4793627d29f3, type: 2}
+  actions:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1869475041}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &77828639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77828635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82be6df133f2984380958453ffe9f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &77828640
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77828635}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 7
 --- !u!1 &78573597
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,7 +850,7 @@ GameObject:
   - component: {fileID: 1158900241}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -899,11 +945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knownGlyphs: []
   talkRange: 10
-  latestTalk:
-    Word: 
-    PlayerGuess: 
-    Image: {fileID: 0}
-    Animation: []
+  latestTalk: {fileID: 0}
 --- !u!1 &1404231232
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game
 {
-    [Serializable]
-    public class Hierogplyph
+    [CreateAssetMenu(fileName = "Word",menuName = "Hieroglyph")]
+    public class Hieroglyph: ScriptableObject
     {
         /// <summary>
         /// The word, for us developers.
@@ -19,13 +20,13 @@ namespace Game
         public string PlayerGuess;
 
         /// <summary>
-        /// Image displayed when talking
+        /// Image displayed when talking, Set by some Manager of HieroglyphManager
         /// </summary>
-        public Sprite Image;
+        public Sprite Image; 
 
         /// <summary>
-        /// Animation for the image
+        /// Animation for the image, Set by some Manager of Images
         /// </summary>
-        public Sprite[] Animation;
+        public Animation animation;
     }
 }
