@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
   m_Name: Giant_Unexpected_1
   m_EditorClassIdentifier: 
-  myWord: {fileID: 11400000, guid: 0897ab1ce7d0cde4e9c61b19c9a461e7, type: 2}
+  firstGlyph: {fileID: 11400000, guid: a8cdbc14717e19347aa857b0f4849fbb, type: 2}
+  secondGlyph: {fileID: 0}
   expectedResponse: []
   unexpectedResponse:
     responseWord: {fileID: 0}

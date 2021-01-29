@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
   m_Name: FollowMe_Player_Enter
   m_EditorClassIdentifier: 
-  myWord: {fileID: 11400000, guid: 8aa75f2058bc44e4d9811c246218cc38, type: 2}
+  firstGlyph: {fileID: 11400000, guid: 118f806d370e203428286077b3cca9eb, type: 2}
+  secondGlyph: {fileID: 0}
   expectedResponse:
   - responseWord: {fileID: 11400000, guid: 830370b1da38fce428d40b6c52d20d7c, type: 2}
+    nextBehaviour: {fileID: 11400000, guid: 7d1b08d0ee25b19419e7132f92dfafca, type: 2}
+    onResponse: 0
+  - responseWord: {fileID: 11400000, guid: 8aa75f2058bc44e4d9811c246218cc38, type: 2}
     nextBehaviour: {fileID: 11400000, guid: 7d1b08d0ee25b19419e7132f92dfafca, type: 2}
     onResponse: 0
   unexpectedResponse:

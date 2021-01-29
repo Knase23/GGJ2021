@@ -4,41 +4,52 @@ using Game.Core;
 using Game.UI;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 namespace Game.Gameplay.Player
 {
     public class PlayerDialogueOptions : MonoBehaviour, IHearing, ITalker
     {
-        public List<Hieroglyph> knownGlyphs = new List<Hieroglyph>();
+        public List<HieroGlyph> knownGlyphs = new List<HieroGlyph>();
 
+
+        public InputActionReference CheatForLearningGlyphsActionReference;
+        
         public float talkRange = 3;
-        public Hieroglyph latestTalk;
+        public HieroGlyph latestTalk;
 
         public UnityEvent<PlayerDialogueOptions> onLearnNewGlyph = new UnityEvent<PlayerDialogueOptions>();
 
         public HieroglyphBubble talkBubble;
 
         private bool secondWord;
-        private Hieroglyph previousWord;
+        private HieroGlyph previousWord;
+
+        private void Start()
+        {
+            CheatForLearningGlyphsActionReference.action.performed += context => LearnAllGlyphs();
+        }
 
         private void OnEnable()
         {
             DialogueSystem.AddIHearingToList(this);
+            CheatForLearningGlyphsActionReference.action.Enable();
         }
 
         private void OnDisable()
         {
             DialogueSystem.RemoveIHearingToList(this);
+            CheatForLearningGlyphsActionReference.action.Disable();
         }
 
-        private void LearnNewGlyph(Hieroglyph hieroglyphic)
+        private void LearnNewGlyph(HieroGlyph hieroglyphic)
         {
-            if (knownGlyphs.Contains(hieroglyphic) || hieroglyphic == null || hieroglyphic is LogicGlyph)
+            if (knownGlyphs.Contains(hieroglyphic))
                 return;
+            
             knownGlyphs.Add(hieroglyphic);
             onLearnNewGlyph?.Invoke(this);
-            //Debug.Log("Learned new Glyph");
         }
 
         public void Talk()
@@ -46,19 +57,25 @@ namespace Game.Gameplay.Player
             Talk(latestTalk);
         }
 
-        public void Talk(Hieroglyph hieroglyphic)
+        public void Talk(Glyph glyph, Glyph glyph2 = null)
         {
-            if(hieroglyphic is LogicGlyph)
-                return;
-            latestTalk = hieroglyphic;
-
-            DialogueSystem.Talking(this);
-            
-            if (talkBubble)
+            if (glyph is HieroGlyph hieroglyph)
             {
-                talkBubble.UpdateView(latestTalk, previousWord);
+                latestTalk = hieroglyph;
+                if (previousWord)
+                {
+                    talkBubble.ShowWords(latestTalk, previousWord);
+                    Debug.Log("Two Word");
+                    ResetSecondWord();
+                }
+                else
+                {
+                    talkBubble.ShowWords(latestTalk);
+                    Debug.Log("Single Word");
+                }
+                DialogueSystem.Talking(this);
             }
-            previousWord = latestTalk;
+
         }
 
         public string GetName()
@@ -69,6 +86,7 @@ namespace Game.Gameplay.Player
         public void WaitingForSecondWord(bool state)
         {
             secondWord = state;
+            previousWord = state?latestTalk:null;
             talkBubble.SetExpectedSecond(secondWord);
         }
 
@@ -79,15 +97,31 @@ namespace Game.Gameplay.Player
 
         public void OnHearing(ITalker talker)
         {
-            Hieroglyph talkerWord = talker.GetLatestWord();
+            Glyph glyph = talker.GetLatestGlyph();
 
-            if (talkerWord is LogicGlyph logicGlyph)
+            if (glyph is LogicGlyph logicGlyph)
             {
+                //Do Logic with it!
                 
+                WaitingForSecondWord(true);
+            }
+            else
+            {
+                //Reset the logic that needs to be reset!
+                WaitingForSecondWord(false);
             }
             
-            
-            LearnNewGlyph(talkerWord);
+            if (glyph is HieroGlyph hieroglyph)
+            {
+                LearnNewGlyph(hieroglyph);
+            }
+        }
+
+        private void ResetSecondWord()
+        {
+            secondWord = false;
+            previousWord = null;
+            talkBubble.SetExpectedSecond(secondWord);
         }
 
         public GameObject GetSource()
@@ -95,7 +129,7 @@ namespace Game.Gameplay.Player
             return gameObject;
         }
 
-        public Hieroglyph GetLatestWord()
+        public Glyph GetLatestGlyph()
         {
             return latestTalk;
         }
@@ -109,5 +143,15 @@ namespace Game.Gameplay.Player
         {
             Gizmos.DrawWireSphere(transform.position, talkRange);
         }
+
+        private void LearnAllGlyphs()
+        {
+            HieroGlyph[] glyphs = Resources.LoadAll<HieroGlyph>("HieroGlyph\\");
+            foreach (HieroGlyph hieroGlyph in glyphs)
+            {
+                LearnNewGlyph(hieroGlyph);
+            }
+        }
+        
     }
 }

@@ -4,22 +4,15 @@ using UnityEngine;
 
 namespace Game.UI
 {
-    public class HieroglyphBubble : MonoBehaviour
+    public class HieroglyphBubble : Bubble
     {
-        public SpriteRenderer firstWordRenderer;
         public SpriteRenderer secondWordRenderer;
-        public Animator bubbleAnimator;
-
-        private Vector3 _defaultsScale;
         private bool _expectedSecond;
 
-        private void Start()
+        protected override void Start()
         {
-            firstWordRenderer.sprite = null;
+            base.Start();
             secondWordRenderer.sprite = null;
-            gameObject.SetActive(false);
-            _defaultsScale = transform.localScale;
-            transform.localScale = Vector3.zero;
         }
 
         public void SetExpectedSecond(bool state)
@@ -27,30 +20,28 @@ namespace Game.UI
             _expectedSecond = state;
         }
 
-        public void UpdateView(Hieroglyph firstWord = null, Hieroglyph secondWord = null)
+        public void ShowWords(HieroGlyph firstWord = null, HieroGlyph secondWord = null)
         {
-            if(firstWord is LogicGlyph)
-                return;
-            
-            gameObject.SetActive(true);
-            gameObject.LeanScale(_defaultsScale, 0.5f).setEaseOutBack();
+            if (gameObject.activeInHierarchy == false)
+            {
+                BubbleStartEffect();
+                bubbleAnimator.SetBool("SecondWord", secondWord != null);
+            }
 
-            firstWordRenderer.sprite = firstWord?.talkImage;
+            firstRenderer.sprite = firstWord?.talkImage;
             secondWordRenderer.sprite = secondWord?.talkImage;
 
-            //Hide after a few seconds if not expecting SecondWord.
+            Invoke(nameof(BubbleEnd), 1f);
+        }
 
-            if (secondWord != null)
+        protected override void BubbleEnd()
+        {
+            if (_expectedSecond)
             {
-                bubbleAnimator.SetTrigger("SecondWord");
-                gameObject.LeanScale(Vector3.zero, 0.5f).setDelay(2.5f).setEaseOutBack()
-                    .setOnComplete(() => { gameObject.SetActive(false); });
+                bubbleAnimator.SetBool("SecondWord", true);
             }
-            else if(_expectedSecond == false)
-            {
-                gameObject.LeanScale(Vector3.zero, 0.5f).setDelay(2.5f).setEaseOutBack()
-                    .setOnComplete(() => { gameObject.SetActive(false); });
-            }
+            gameObject.LeanCancel();
+            base.BubbleEnd();
         }
     }
 }

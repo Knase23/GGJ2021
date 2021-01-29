@@ -9,11 +9,12 @@ namespace Game.Gameplay.AI
 {
     public class AIDialogue : MonoBehaviour, IHearing, ITalker
     {
-        private Hieroglyph _latestGlyph = null;
+        private Glyph _latestGlyph = null;
         public float talkRange = 10;
 
 
         public HieroglyphBubble talkBubble;
+        public ExpressionBubble ExpressionBubble;
 
         public AiBehaviour FirstBehaviour;
 
@@ -22,8 +23,8 @@ namespace Game.Gameplay.AI
         public AiBehaviour currentAiBehaviour;
 
         public GameObject[] interestedSources;
-        
-        
+
+
         private void Start()
         {
             currentAiBehaviour = FirstBehaviour;
@@ -47,7 +48,7 @@ namespace Game.Gameplay.AI
         public void OnHearing(ITalker talker)
         {
             //Debug.Log($"Heard {talker.GetName()} say: {talker.GetLatestWord()}");
-            Hieroglyph talkerWord = talker.GetLatestWord(); // Get what it said
+            Glyph glyph = talker.GetLatestGlyph(); // Get what it said
 
             bool isInterested = false;
             foreach (GameObject interestedSource in interestedSources)
@@ -58,42 +59,67 @@ namespace Game.Gameplay.AI
                     break;
                 }
             }
-            
-            if(isInterested == false) return;
+
+            if (isInterested == false) return;
+
+            HieroGlyph hieroGlyph = null;
+
+            hieroGlyph = glyph as HieroGlyph;
 
             AiBehaviour.BehaviourChange
-                changeInBehaviour = currentAiBehaviour.GetResponse(talkerWord); // Check how we react
+                changeInBehaviour = currentAiBehaviour.GetResponse(hieroGlyph); // Check how we react
 
             if (changeInBehaviour.onResponse > -1 && changeInBehaviour.onResponse < actions.Count
             ) // Check if their is a action relate
                 actions[changeInBehaviour.onResponse]?.Invoke();
-            
-            
-            talker.WaitingForSecondWord(changeInBehaviour.nextBehaviour.myWord is LogicGlyph); // Is the Ai expecting a second word
 
             currentAiBehaviour = changeInBehaviour.nextBehaviour; // Change our behavior to next one!
-            if (currentAiBehaviour.myWord is LogicGlyph)
-                return;
             
-            Talk();
+            
+            if (currentAiBehaviour.firstGlyph is LogicGlyph)
+            {
+                Talk();
+            }
+            if(currentAiBehaviour.firstGlyph is HieroGlyph)
+            {
+                Invoke(nameof(Talk), 0.5f);
+            }
+            if (currentAiBehaviour.firstGlyph is ExpressionGlyph expressionGlyph)
+            {
+                ExpressionBubble.DisplayExpression(expressionGlyph);
+            }
+            
         }
 
         public void Talk()
         {
-            Talk(currentAiBehaviour.myWord);
+            Talk(currentAiBehaviour.firstGlyph,currentAiBehaviour.secondGlyph);
         }
 
-        public void Talk(Hieroglyph word)
+        public void Talk(Glyph glyph,Glyph glyph2 = null)
         {
-            if (word == null) return;
+            
+            if (glyph == null) return;
+            _latestGlyph = glyph;
+            if (glyph is HieroGlyph hieroglyph)
+            {
+                HieroGlyph hieroGlyph2 = glyph2 as HieroGlyph;
 
-            _latestGlyph = word;
+                talkBubble.SetExpectedSecond(hieroGlyph2 != null);
+                talkBubble.ShowWords(hieroglyph, hieroGlyph2);
+                DialogueSystem.Talking(this);
+            }
 
-            talkBubble.SetExpectedSecond(false);
-            talkBubble.UpdateView(word, null);
-            DialogueSystem.Talking(this);
+            if (glyph is ExpressionGlyph expressionGlyph)
+            {
+                ExpressionBubble.DisplayExpression(expressionGlyph);
+            }
+                
+            if (glyph is LogicGlyph logicGlyph)
+            {
+                DialogueSystem.Talking(this);
+            }
         }
-
         public string GetName()
         {
             return gameObject.name;
@@ -108,7 +134,7 @@ namespace Game.Gameplay.AI
             return gameObject;
         }
 
-        public Hieroglyph GetLatestWord()
+        public Glyph GetLatestGlyph()
         {
             return _latestGlyph;
         }

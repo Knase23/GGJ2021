@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Game.Core;
 using Game.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,13 +10,13 @@ namespace Game.UI
     {
         public GameObject glyphButtonPrefab;
 
-        private readonly Dictionary<Hieroglyph, GlyphButton> _displayedGlyphs = new Dictionary<Hieroglyph, GlyphButton>();
+        private readonly Dictionary<HieroGlyph, GlyphButton> _displayedGlyphs = new Dictionary<HieroGlyph, GlyphButton>();
 
         public void UpdateDisplayedGlyphs(PlayerDialogueOptions playerDialogueOptions)
         {
             if (_displayedGlyphs.Count < playerDialogueOptions.knownGlyphs.Count)
             {
-                foreach (Hieroglyph hieroglyph in playerDialogueOptions.knownGlyphs)
+                foreach (HieroGlyph hieroglyph in playerDialogueOptions.knownGlyphs)
                 {
                     if (_displayedGlyphs.ContainsKey(hieroglyph)) continue;
                 
@@ -23,9 +24,9 @@ namespace Game.UI
                 }
             }
         }
-        private GlyphButton CreateButton(Hieroglyph glyph, ITalker talker)
+        private GlyphButton CreateButton(HieroGlyph glyph, ITalker talker)
         {
-            GlyphButton glyphButton = new GlyphButton() {Hieroglyph = glyph, Talker = talker};
+            GlyphButton glyphButton = new GlyphButton() {HieroGlyph = glyph, Talker = talker};
 
             GameObject buttonObject = Instantiate(glyphButtonPrefab, Vector3.zero, Quaternion.identity, transform);
             buttonObject.GetComponent<Image>().sprite = glyph.Image;
@@ -37,7 +38,7 @@ namespace Game.UI
 
         private class GlyphButton
         {
-            public Hieroglyph Hieroglyph;
+            public HieroGlyph HieroGlyph;
             public ITalker Talker;
             public GameObject References;
 

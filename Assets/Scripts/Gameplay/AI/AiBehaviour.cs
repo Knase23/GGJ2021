@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Game.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,8 +9,8 @@ namespace Game.Gameplay.AI
     [CreateAssetMenu(fileName = "AiBehaviour", menuName = "AI", order = 0)]
     public class AiBehaviour : ScriptableObject
     {
-        public Hieroglyph myWord;
-
+        public Glyph firstGlyph;
+        public Glyph secondGlyph;
         public List<BehaviourChange> expectedResponse = new List<BehaviourChange>();
 
         // Ai knows how to respond
@@ -18,12 +19,12 @@ namespace Game.Gameplay.AI
         [Serializable]
         public class BehaviourChange
         {
-            public Hieroglyph responseWord;
+            public Glyph responseWord;
             public AiBehaviour nextBehaviour;
             public int onResponse = -1; // It is connected to unityEvents that are stored in AIDialogue
         }
 
-        public BehaviourChange GetResponse(Hieroglyph word)
+        public BehaviourChange GetResponse(HieroGlyph word)
         {
             //Go through expectedResponse
             foreach (BehaviourChange behaviourChange in expectedResponse)

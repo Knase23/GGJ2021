@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Game
 {
     [CreateAssetMenu(fileName = "Word",menuName = "Hieroglyph")]
-    public class Hieroglyph: ScriptableObject
+    public class HieroGlyph: Glyph
     {
         /// <summary>
         /// The word, for us developers.

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.Core;
 using UnityEngine;
 
 namespace Game
@@ -27,13 +28,10 @@ namespace Game
                 if(talker == listener) continue;
 
                 float distance = Vector2.Distance(listener.GetLocation(), talker.GetLocation());
+                
                 if (distance < talker.GetTalkRange() + 2)
                 {
                     listener.OnHearing(talker);
-                }
-                else
-                {
-                    //Debug.Log($"{listener} could not hear {talker.GetName()}: Distance was: {distance}");
                 }
             }
         }
@@ -47,10 +45,10 @@ namespace Game
     public interface ITalker : ILocation
     {
         GameObject GetSource();
-        Hieroglyph GetLatestWord();
+        Glyph GetLatestGlyph();
         float GetTalkRange();
         void Talk();
-        void Talk(Hieroglyph word);
+        void Talk(Glyph glyph, Glyph glyph2 = null);
         string GetName();
         void WaitingForSecondWord(bool state);
     }

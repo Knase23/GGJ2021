@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
   m_Name: Giant_Hello_Response
   m_EditorClassIdentifier: 
-  myWord: {fileID: 11400000, guid: b1ff2bad1aa36a749bab8d32f240f0ff, type: 2}
+  firstGlyph: {fileID: 11400000, guid: b1ff2bad1aa36a749bab8d32f240f0ff, type: 2}
+  secondGlyph: {fileID: 0}
   expectedResponse:
-  - responseWord: {fileID: 11400000, guid: dfa2fc5a8b259e245a29683ed7b92c07, type: 2}
+  - responseWord: {fileID: 11400000, guid: 757ea422221990d438cde35f97a0badc, type: 2}
     nextBehaviour: {fileID: 0}
     onResponse: -1
-  - responseWord: {fileID: 11400000, guid: c65d6889a8dee6d49bdea14b08514366, type: 2}
+  - responseWord: {fileID: 11400000, guid: 08021baaaced4314fa6bf78d34feb026, type: 2}
     nextBehaviour: {fileID: 0}
     onResponse: -1
   unexpectedResponse:
