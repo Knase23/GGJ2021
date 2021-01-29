@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7973222864748366791}
   - component: {fileID: 6329230385688262914}
   - component: {fileID: 5432281150149234121}
+  - component: {fileID: 2229053598496876154}
   m_Layer: 8
   m_Name: FollowMe
   m_TagString: Untagged
@@ -36,6 +37,7 @@ Transform:
   m_Children:
   - {fileID: 259986267230743763}
   - {fileID: 9054803865614976228}
+  - {fileID: 1199640333956597311}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84,15 +86,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71491eb900ff42aca79ea1dc7e82ca24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talkRange: 10
+  talkRange: 3
+  talkBubble: {fileID: 5276164774200120316}
   FirstBehaviour: {fileID: 11400000, guid: 2aa9370ab3d15664f8784126c188faaf, type: 2}
   actions:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7973222864748366791}
-        m_TargetAssemblyTypeName: AIController, Assembly-CSharp
-        m_MethodName: SetMoveDirection
-        m_Mode: 3
+      - m_Target: {fileID: 2229053598496876154}
+        m_TargetAssemblyTypeName: Game.Gameplay.AI.FollowTarget, GGJProject
+        m_MethodName: Follow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2229053598496876154}
+        m_TargetAssemblyTypeName: Game.Gameplay.AI.FollowTarget, GGJProject
+        m_MethodName: StopFollow
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -102,6 +119,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   currentAiBehaviour: {fileID: 0}
+  interestedSources:
+  - {fileID: 0}
 --- !u!58 &428300769392427879
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -115,7 +134,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.1}
   serializedVersion: 2
   m_Radius: 0.5
 --- !u!114 &7973222864748366791
@@ -166,6 +185,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2229053598496876154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259986265654510169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6884d763e7c289e4ca1d3e1dd3839147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStartFollow:
+    m_PersistentCalls:
+      m_Calls: []
+  onStopFollow:
+    m_PersistentCalls:
+      m_Calls: []
+  minimumDistanceAway: 1
+  maximumDistanceAway: 3
+  controller: {fileID: 7973222864748366791}
 --- !u!1 &259986266985625344
 GameObject:
   m_ObjectHideFlags: 0
@@ -5196,3 +5236,88 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talker: {fileID: 6390197515793708390}
+--- !u!1001 &8131846105349224633
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 259986265654510150}
+    m_Modifications:
+    - target: {fileID: 4615052883207410489, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_Name
+      value: Bubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.34538797
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.34538797
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.34538797
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+--- !u!4 &1199640333956597311 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+  m_PrefabInstance: {fileID: 8131846105349224633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5276164774200120316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4171086534962539333, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+  m_PrefabInstance: {fileID: 8131846105349224633}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fe50e120b30f04684cd0ea7b35deda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

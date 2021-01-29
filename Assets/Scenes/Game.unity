@@ -5146,6 +5146,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4834842781561766774, guid: ae3f4be97f0ac8748bd67a4e5e366b29, type: 3}
+      propertyPath: interestedSources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834842781561766774, guid: ae3f4be97f0ac8748bd67a4e5e366b29, type: 3}
+      propertyPath: interestedSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 561382506}
     - target: {fileID: 6840439446116026684, guid: ae3f4be97f0ac8748bd67a4e5e366b29, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.88
@@ -10454,6 +10462,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   minimumDistanceAway: 1
+  maximumDistanceAway: 3
   controller: {fileID: 1274263922120989009}
 --- !u!1 &1479973614
 GameObject:
@@ -10743,11 +10752,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 259986265654510150, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.769225
+      value: -20.46
       objectReference: {fileID: 0}
     - target: {fileID: 259986265654510150, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.0834284
+      value: -4.04
       objectReference: {fileID: 0}
     - target: {fileID: 259986265654510150, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10785,10 +10794,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: FollowMe
       objectReference: {fileID: 0}
+    - target: {fileID: 428300769392427879, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6390197515793708390, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
+      propertyPath: talkRange
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6390197515793708390, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
       propertyPath: actions.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6390197515793708390, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
+      propertyPath: interestedSources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6390197515793708390, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
+      propertyPath: interestedSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 561382506}
     - target: {fileID: 6390197515793708390, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
       propertyPath: actions.Array.data[0].m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -10905,6 +10930,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2259530251127047134, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3182913682711537583, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -10957,6 +10986,14 @@ PrefabInstance:
       propertyPath: onLearnNewGlyph.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1603491456}
+    - target: {fileID: 8055965815725738100, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055965815725738100, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8f3b6a44697533e4a9a83bd3327dc0e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
 --- !u!1001 &7420507664629666788

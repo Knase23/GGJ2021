@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54d0c10e9a625b8488798eb86ee71af6, type: 3}
-  m_Name: No
+  m_Name: Stop
   m_EditorClassIdentifier: 
-  Word: No
+  Word: Stop
   PlayerGuess: 
-  Image: {fileID: 21300000, guid: f52dbfa6503b923448a8b40e3ac3d449, type: 3}
-  talkImage: {fileID: 21300000, guid: ccf2f5f3b090ccc4e894b35859497374, type: 3}
+  Image: {fileID: 21300000, guid: 16b9f944c6639274bae4b3343192d9fc, type: 3}
+  talkImage: {fileID: 21300000, guid: 842cb0c44f1bacf4b85e7e875fcb519e, type: 3}

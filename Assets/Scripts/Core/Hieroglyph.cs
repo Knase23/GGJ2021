@@ -27,6 +27,6 @@ namespace Game
         /// <summary>
         /// Animation for the image, Set by some Manager of Images
         /// </summary>
-        public Animation animation;
+        public Sprite talkImage;
     }
 }
