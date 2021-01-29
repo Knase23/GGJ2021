@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 
 namespace Game
 {
-    public class Movement : MonoBehaviour
+    public class Movement : MonoBehaviour, IMove
     {
         private Rigidbody2D _rigidbody2D;
         public SpriteRenderer spriteRenderer;
@@ -77,6 +77,16 @@ namespace Game
 
             return (moveDirection + Vector2.up).normalized;
             ;
+        }
+
+        public float GetSpeed()
+        {
+            return speed;
+        }
+
+        public void SetSpeed(float value)
+        {
+            this.speed = value;
         }
     }
 }
