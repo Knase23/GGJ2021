@@ -44,8 +44,8 @@ namespace Game.Gameplay.AI
             Hieroglyph talkerWord = talker.GetLatestWord(); // Get what it said
             AiBehaviour.BehaviourChange changeInBehaviour = currentAiBehaviour.GetResponse(talkerWord); // Check how we react
             
-            if(changeInBehaviour.OnResponse > -1 && changeInBehaviour.OnResponse < actions.Count) // Check if their is a action relate
-                actions[changeInBehaviour.OnResponse]?.Invoke();
+            if(changeInBehaviour.onResponse > -1 && changeInBehaviour.onResponse < actions.Count) // Check if their is a action relate
+                actions[changeInBehaviour.onResponse]?.Invoke();
 
             currentAiBehaviour = changeInBehaviour.nextBehaviour;// Change our behavoior to next one!
             Talk();
@@ -53,6 +53,8 @@ namespace Game.Gameplay.AI
 
         public void Talk()
         {
+            
+            
             Talk(currentAiBehaviour.myWord);
         }
         

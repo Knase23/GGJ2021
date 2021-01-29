@@ -16,11 +16,11 @@ MonoBehaviour:
   expectedResponse:
   - responseWord: {fileID: 11400000, guid: dfa2fc5a8b259e245a29683ed7b92c07, type: 2}
     nextBehaviour: {fileID: 0}
-    OnResponse: 0
+    onResponse: -1
   - responseWord: {fileID: 11400000, guid: c65d6889a8dee6d49bdea14b08514366, type: 2}
     nextBehaviour: {fileID: 0}
-    OnResponse: -1
-  unxpectedResponse:
+    onResponse: -1
+  unexpectedResponse:
     responseWord: {fileID: 0}
     nextBehaviour: {fileID: 11400000, guid: 7dd967581bb04ef4585f4793627d29f3, type: 2}
-    OnResponse: -1
+    onResponse: -1

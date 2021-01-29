@@ -13,14 +13,14 @@ namespace Game.Gameplay.AI
         public List<BehaviourChange> expectedResponse = new List<BehaviourChange>();
 
         // Ai knows how to respond
-        public BehaviourChange unxpectedResponse = new BehaviourChange();
+        public BehaviourChange unexpectedResponse = new BehaviourChange();
         
         [Serializable]
         public class BehaviourChange
         {
             public Hieroglyph responseWord;
             public AiBehaviour nextBehaviour;
-            public int OnResponse = -1; // It is connected to unityEvents that are stored in AIDialogue
+            public int onResponse = -1; // It is connected to unityEvents that are stored in AIDialogue
         }
 
         public BehaviourChange GetResponse(Hieroglyph word)
@@ -35,10 +35,8 @@ namespace Game.Gameplay.AI
                 }
             }
             Debug.Log("No Expected Response found");
-            return unxpectedResponse;
+            return unexpectedResponse;
         }
-        
-        
-        
+
     }
 }
