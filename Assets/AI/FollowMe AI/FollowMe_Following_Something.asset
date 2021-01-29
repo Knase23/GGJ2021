@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
-  m_Name: FollowMe_Player_Enter
+  m_Name: FollowMe_Following_Something
   m_EditorClassIdentifier: 
-  myWord: {fileID: 11400000, guid: 8aa75f2058bc44e4d9811c246218cc38, type: 2}
+  myWord: {fileID: 0}
   expectedResponse:
-  - responseWord: {fileID: 11400000, guid: 830370b1da38fce428d40b6c52d20d7c, type: 2}
-    nextBehaviour: {fileID: 11400000, guid: 7d1b08d0ee25b19419e7132f92dfafca, type: 2}
-    onResponse: 0
+  - responseWord: {fileID: 11400000, guid: 48f5dffb26037614b83163f44e520354, type: 2}
+    nextBehaviour: {fileID: 11400000, guid: 2aa9370ab3d15664f8784126c188faaf, type: 2}
+    onResponse: 1
   unexpectedResponse:
     responseWord: {fileID: 0}
     nextBehaviour: {fileID: 11400000}
-    onResponse: -1
+    onResponse: 0

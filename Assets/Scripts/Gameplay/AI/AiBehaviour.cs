@@ -14,7 +14,7 @@ namespace Game.Gameplay.AI
 
         // Ai knows how to respond
         public BehaviourChange unexpectedResponse = new BehaviourChange();
-        
+
         [Serializable]
         public class BehaviourChange
         {

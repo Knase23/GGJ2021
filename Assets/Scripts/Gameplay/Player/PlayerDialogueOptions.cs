@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Game.Core;
+using Game.UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -15,6 +17,11 @@ namespace Game.Gameplay.Player
 
         public UnityEvent<PlayerDialogueOptions> onLearnNewGlyph = new UnityEvent<PlayerDialogueOptions>();
 
+        public HieroglyphBubble talkBubble;
+
+        private bool secondWord;
+        private Hieroglyph previousWord;
+
         private void OnEnable()
         {
             DialogueSystem.AddIHearingToList(this);
@@ -27,9 +34,8 @@ namespace Game.Gameplay.Player
 
         private void LearnNewGlyph(Hieroglyph hieroglyphic)
         {
-            if (knownGlyphs.Contains(hieroglyphic) || hieroglyphic == null)
+            if (knownGlyphs.Contains(hieroglyphic) || hieroglyphic == null || hieroglyphic is LogicGlyph)
                 return;
-            
             knownGlyphs.Add(hieroglyphic);
             onLearnNewGlyph?.Invoke(this);
             //Debug.Log("Learned new Glyph");
@@ -42,14 +48,28 @@ namespace Game.Gameplay.Player
 
         public void Talk(Hieroglyph hieroglyphic)
         {
-            
+            if(hieroglyphic is LogicGlyph)
+                return;
             latestTalk = hieroglyphic;
+
             DialogueSystem.Talking(this);
+            
+            if (talkBubble)
+            {
+                talkBubble.UpdateView(latestTalk, previousWord);
+            }
+            previousWord = latestTalk;
         }
 
         public string GetName()
         {
             return "Player";
+        }
+
+        public void WaitingForSecondWord(bool state)
+        {
+            secondWord = state;
+            talkBubble.SetExpectedSecond(secondWord);
         }
 
         public Vector2 GetLocation()
@@ -59,7 +79,20 @@ namespace Game.Gameplay.Player
 
         public void OnHearing(ITalker talker)
         {
-            LearnNewGlyph(talker.GetLatestWord());
+            Hieroglyph talkerWord = talker.GetLatestWord();
+
+            if (talkerWord is LogicGlyph logicGlyph)
+            {
+                
+            }
+            
+            
+            LearnNewGlyph(talkerWord);
+        }
+
+        public GameObject GetSource()
+        {
+            return gameObject;
         }
 
         public Hieroglyph GetLatestWord()

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
   m_Name: Giant_Hello_Response
   m_EditorClassIdentifier: 
-  myWord: {fileID: 11400000, guid: 0897ab1ce7d0cde4e9c61b19c9a461e7, type: 2}
+  myWord: {fileID: 11400000, guid: b1ff2bad1aa36a749bab8d32f240f0ff, type: 2}
   expectedResponse:
   - responseWord: {fileID: 11400000, guid: dfa2fc5a8b259e245a29683ed7b92c07, type: 2}
     nextBehaviour: {fileID: 0}
@@ -22,5 +22,5 @@ MonoBehaviour:
     onResponse: -1
   unexpectedResponse:
     responseWord: {fileID: 0}
-    nextBehaviour: {fileID: 11400000, guid: 7dd967581bb04ef4585f4793627d29f3, type: 2}
+    nextBehaviour: {fileID: 11400000, guid: 2bbf9b63c4d2a0a48a4b69e49fd87b5c, type: 2}
     onResponse: -1

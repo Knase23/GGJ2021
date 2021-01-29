@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Word: Yes
   PlayerGuess: 
-  Image: {fileID: 21300000, guid: 75d56bab1e66a5244b4b43f20958edfe, type: 3}
-  animation: {fileID: 0}
+  Image: {fileID: 21300000, guid: 156a4257761707f4fb1ed38729e7d708, type: 3}
+  talkImage: {fileID: 21300000, guid: 8b87e28407621dc4a9bea095e993ac1e, type: 3}

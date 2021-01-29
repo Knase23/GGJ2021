@@ -46,11 +46,13 @@ namespace Game
 
     public interface ITalker : ILocation
     {
+        GameObject GetSource();
         Hieroglyph GetLatestWord();
         float GetTalkRange();
         void Talk();
         void Talk(Hieroglyph word);
         string GetName();
+        void WaitingForSecondWord(bool state);
     }
 
     public interface ILocation
