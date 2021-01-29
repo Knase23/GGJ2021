@@ -4885,6 +4885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sys: {fileID: 0}
+  amount: 0
 --- !u!1 &4275210162148483311
 GameObject:
   m_ObjectHideFlags: 0
@@ -4895,12 +4896,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3182913682711537583}
   - component: {fileID: 7940960953112369106}
+  - component: {fileID: 7557182726658102157}
   - component: {fileID: 5716462417374308486}
   - component: {fileID: 8055965815725738100}
   - component: {fileID: 1128097684762832380}
   - component: {fileID: 8513867702240633969}
   - component: {fileID: 8287264634728778463}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hero
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4953,6 +4955,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7557182726658102157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4275210162148483311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9ec01ddd5454e49a16156c66b2abb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: -1680190386980627800, guid: fba42a4692a33cc4381d29e37a5adff7, type: 3}
 --- !u!114 &5716462417374308486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4965,9 +4980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7932b1ae6f79ff47912c75bb68ca2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionBinding: {fileID: -1680190386980627800, guid: fba42a4692a33cc4381d29e37a5adff7, type: 3}
   spriteRenderer: {fileID: 5857314671854936691}
-  speed: 10
+  speed: 3
+  moveController: {fileID: 7557182726658102157}
 --- !u!95 &8055965815725738100
 Animator:
   serializedVersion: 3
@@ -5000,6 +5015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sys: {fileID: 7750151002707862139}
+  amount: 0
 --- !u!50 &8513867702240633969
 Rigidbody2D:
   serializedVersion: 4

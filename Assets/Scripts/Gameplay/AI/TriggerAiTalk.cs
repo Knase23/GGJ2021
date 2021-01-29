@@ -18,7 +18,6 @@ public class TriggerAiTalk : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Something Entered the Trigger, something with tag: "+ other.tag);
         if (other.CompareTag("Player"))
         {
             talker.Talk();

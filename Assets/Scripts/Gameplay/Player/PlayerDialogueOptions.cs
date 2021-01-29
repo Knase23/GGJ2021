@@ -27,12 +27,12 @@ namespace Game.Gameplay.Player
 
         private void LearnNewGlyph(Hieroglyph hieroglyphic)
         {
-            if (knownGlyphs.Contains(hieroglyphic))
+            if (knownGlyphs.Contains(hieroglyphic) || hieroglyphic == null)
                 return;
             
             knownGlyphs.Add(hieroglyphic);
             onLearnNewGlyph?.Invoke(this);
-            Debug.Log("Learned new Glyph");
+            //Debug.Log("Learned new Glyph");
         }
 
         public void Talk()

@@ -39,7 +39,7 @@ namespace Game.Gameplay.AI
 
         public void OnHearing(ITalker talker)
         {
-            Debug.Log($"Heard {talker.GetName()} say: {talker.GetLatestWord()}");
+            //Debug.Log($"Heard {talker.GetName()} say: {talker.GetLatestWord()}");
             
             Hieroglyph talkerWord = talker.GetLatestWord(); // Get what it said
             AiBehaviour.BehaviourChange changeInBehaviour = currentAiBehaviour.GetResponse(talkerWord); // Check how we react
@@ -53,13 +53,13 @@ namespace Game.Gameplay.AI
 
         public void Talk()
         {
-            
-            
             Talk(currentAiBehaviour.myWord);
         }
         
         public void Talk(Hieroglyph word)
         {
+            if(word == null) return;
+            
             _latestGlyph = word;
             DialogueSystem.Talking(this);
         }

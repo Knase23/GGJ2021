@@ -30,11 +30,11 @@ namespace Game.Gameplay.AI
             {
                 if (behaviourChange.responseWord == word)
                 {
-                    Debug.Log("Expected Response");
+                    //Debug.Log("Expected Response");
                     return behaviourChange;
                 }
             }
-            Debug.Log("No Expected Response found");
+            //Debug.Log("No Expected Response found");
             return unexpectedResponse;
         }
 

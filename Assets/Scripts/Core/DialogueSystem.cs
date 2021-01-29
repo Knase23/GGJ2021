@@ -21,7 +21,7 @@ namespace Game
 
         public static void Talking(ITalker talker)
         {
-            Debug.Log($"{talker.GetName()} is saying:{talker.GetLatestWord()}");
+            //Debug.Log($"{talker.GetName()} is saying:{talker.GetLatestWord()}");
             foreach (IHearing listener in Listeners)
             {
                 if(talker == listener) continue;
@@ -33,7 +33,7 @@ namespace Game
                 }
                 else
                 {
-                    Debug.Log($"{listener} could not hear {talker.GetName()}: Distance was: {distance}");
+                    //Debug.Log($"{listener} could not hear {talker.GetName()}: Distance was: {distance}");
                 }
             }
         }
