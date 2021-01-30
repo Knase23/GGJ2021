@@ -29,7 +29,7 @@ namespace Game.Gameplay.AI
         private void Start()
         {
             currentAiBehaviour = FirstBehaviour;
-            speech = GetComponent<SpeechSFX>();
+        
         }
 
         private void OnEnable()

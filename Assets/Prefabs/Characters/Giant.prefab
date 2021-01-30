@@ -5067,7 +5067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talkRange: 10
-  speech: {fileID: 0}
+  speech: {fileID: 1766535178}
   talkBubble: {fileID: 3393925450471987047}
   ExpressionBubble: {fileID: 3965196912678785094}
   FirstBehaviour: {fileID: 11400000, guid: 7dd967581bb04ef4585f4793627d29f3, type: 2}

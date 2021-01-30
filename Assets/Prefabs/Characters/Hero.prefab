@@ -4942,7 +4942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knownGlyphs: []
-  speech: {fileID: 0}
+  speech: {fileID: 4974652318040383834}
   CheatForLearningGlyphsActionReference: {fileID: -3744298366875368235, guid: fba42a4692a33cc4381d29e37a5adff7, type: 3}
   talkRange: 10
   latestTalk: {fileID: 0}
