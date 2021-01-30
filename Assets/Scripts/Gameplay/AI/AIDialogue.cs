@@ -12,6 +12,7 @@ namespace Game.Gameplay.AI
         private Glyph _latestGlyph = null;
         public float talkRange = 10;
 
+        public SpeechSFX speech;
 
         public HieroglyphBubble talkBubble;
         public ExpressionBubble ExpressionBubble;
@@ -28,6 +29,7 @@ namespace Game.Gameplay.AI
         private void Start()
         {
             currentAiBehaviour = FirstBehaviour;
+            speech = GetComponent<SpeechSFX>();
         }
 
         private void OnEnable()
@@ -98,6 +100,8 @@ namespace Game.Gameplay.AI
 
         public void Talk(Glyph glyph,Glyph glyph2 = null)
         {
+            
+            if(speech != null) speech.Speak();
             
             if (glyph == null) return;
             _latestGlyph = glyph;

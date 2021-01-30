@@ -51,6 +51,8 @@ namespace Game
         void Talk(Glyph glyph, Glyph glyph2 = null);
         string GetName();
         void WaitingForSecondWord(bool state);
+        
+        
     }
 
     public interface ILocation
