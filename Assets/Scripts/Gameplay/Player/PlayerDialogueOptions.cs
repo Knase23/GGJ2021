@@ -13,6 +13,7 @@ namespace Game.Gameplay.Player
     {
         public List<HieroGlyph> knownGlyphs = new List<HieroGlyph>();
 
+        public SpeechSFX speech;
 
         public InputActionReference CheatForLearningGlyphsActionReference;
         
@@ -61,6 +62,7 @@ namespace Game.Gameplay.Player
         {
             if (glyph is HieroGlyph hieroglyph)
             {
+                
                 latestTalk = hieroglyph;
                 if (previousWord)
                 {
@@ -74,6 +76,7 @@ namespace Game.Gameplay.Player
                     Debug.Log("Single Word");
                 }
                 DialogueSystem.Talking(this);
+                if(speech != null) speech.Speak();
             }
 
         }
