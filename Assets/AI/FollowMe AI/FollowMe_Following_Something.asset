@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
   m_Name: FollowMe_Following_Something
   m_EditorClassIdentifier: 
-  myWord: {fileID: 11400000, guid: 118f806d370e203428286077b3cca9eb, type: 2}
+  firstGlyph: {fileID: 0}
+  secondGlyph: {fileID: 0}
   expectedResponse:
-  - responseWord: {fileID: 11400000, guid: 48f5dffb26037614b83163f44e520354, type: 2}
+  - responseWord: {fileID: 0}
     nextBehaviour: {fileID: 11400000, guid: 2aa9370ab3d15664f8784126c188faaf, type: 2}
     onResponse: 1
   unexpectedResponse:

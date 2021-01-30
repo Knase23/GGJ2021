@@ -2,7 +2,8 @@ using UnityEngine;
 
 namespace Game.Core
 {
-    public abstract class Glyph : ScriptableObject
+    
+    public class Glyph : ScriptableObject
     {
     }
 }
