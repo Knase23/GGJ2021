@@ -24,12 +24,16 @@ namespace Game.Gameplay.Player
 
         public HieroglyphBubble talkBubble;
 
+        private event Action OnSpeechComplete;
+        
+        
         private bool secondWord;
         private HieroGlyph previousWord;
 
         private void Start()
         {
             CheatForLearningGlyphsActionReference.action.performed += context => LearnAllGlyphs();
+            talkBubble.OnBubbleEnd += SpeeachCompleteCheck;
         }
 
         private void OnEnable()
@@ -93,6 +97,12 @@ namespace Game.Gameplay.Player
             talkBubble.SetExpectedSecond(secondWord);
         }
 
+        
+        public void SubscribeToOnSpeechComplete(Action action)
+        {
+            OnSpeechComplete += action;
+        }
+
         public Vector2 GetLocation()
         {
             return transform.position;
@@ -118,6 +128,17 @@ namespace Game.Gameplay.Player
             {
                 LearnNewGlyph(hieroglyph);
             }
+        }
+
+        public void SpeeachCompleteCheck()
+        {
+            if (talkBubble.gameObject.activeInHierarchy == false)
+            {
+                OnSpeechComplete?.Invoke();
+                OnSpeechComplete = null;
+
+            }
+            
         }
 
         private void ResetSecondWord()

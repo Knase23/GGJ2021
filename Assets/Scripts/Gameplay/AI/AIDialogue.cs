@@ -77,8 +77,8 @@ namespace Game.Gameplay.AI
 
             currentAiBehaviour = changeInBehaviour.nextBehaviour; // Change our behavior to next one!
 
-            CheckCurrentGlyphs();
-
+            //Wait to for speech complete
+            talker.SubscribeToOnSpeechComplete(CheckCurrentGlyphs);
         }
 
         private void DoGlyphCheck(Glyph glyph)
@@ -141,6 +141,11 @@ namespace Game.Gameplay.AI
 
         public void WaitingForSecondWord(bool state)
         {
+        }
+
+        public void SubscribeToOnSpeechComplete(Action action)
+        {
+            
         }
 
         public GameObject GetSource()

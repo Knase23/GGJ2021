@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Game.Core;
 using UnityEngine;
 
@@ -51,8 +52,8 @@ namespace Game
         void Talk(Glyph glyph, Glyph glyph2 = null);
         string GetName();
         void WaitingForSecondWord(bool state);
-        
-        
+
+        void SubscribeToOnSpeechComplete(Action action);
     }
 
     public interface ILocation

@@ -48,7 +48,6 @@ namespace Game.Gameplay.AI
                 Vector3 position = catchUpPoint.position;
                 float distanceFromObjectThatFollow = Vector2.Distance(position, objectThatFollow.transform.position);
                 Vector2 direction =  target.position - position;
-                direction.y = 0;
                 direction.Normalize();
                 if (nearEnough == false && distanceFromObjectThatFollow < minimumCatchUpDistance)
                 {
