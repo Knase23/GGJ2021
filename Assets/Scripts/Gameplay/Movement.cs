@@ -41,6 +41,10 @@ namespace Game
             Vector2 inputs = Controller.GetDirection();
             Vector2 currentVelocity = _rigidbody2D.velocity;
             currentVelocity = new Vector2(0, currentVelocity.y);
+
+            if (_rigidbody2D.isKinematic)
+                currentVelocity = Vector2.zero;
+            
             if (allowLeftRightMovement)
             {
                 if (inputs.x > 0)

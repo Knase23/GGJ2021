@@ -45,10 +45,9 @@ namespace Game.Gameplay.AI
 
             while (distanceToTarget > 0.5f)
             {
-                Vector3 position = catchUpPoint.position;
-                float distanceFromObjectThatFollow = Vector2.Distance(position, objectThatFollow.transform.position);
+                Vector3 position = transform.position;
+                float distanceFromObjectThatFollow = Vector2.Distance(catchUpPoint.position, objectThatFollow.transform.position);
                 Vector2 direction =  target.position - position;
-                direction.y = 0;
                 direction.Normalize();
                 if (nearEnough == false && distanceFromObjectThatFollow < minimumCatchUpDistance)
                 {
@@ -65,7 +64,7 @@ namespace Game.Gameplay.AI
                 }
 
                 yield return new WaitForEndOfFrame();
-                distanceToTarget = Vector2.Distance(transform.position, target.position);
+                distanceToTarget = Vector2.Distance(position, target.position);
             }
 
             Debug.Log("End Walking");

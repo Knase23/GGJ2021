@@ -104,6 +104,36 @@ MonoBehaviour:
   currentAiBehaviour: {fileID: 0}
   interestedSources:
   - {fileID: 0}
+--- !u!1 &706833227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 706833228}
+  m_Layer: 0
+  m_Name: CatchUpPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &706833228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706833227}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 8.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1370205080109937765}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850486560
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,8 +383,8 @@ MonoBehaviour:
   controller: {fileID: 1314080533}
   target: {fileID: 0}
   objectThatFollow: {fileID: 0}
-  primaryRenderer: {fileID: 0}
-  catchUpPoint: {fileID: 0}
+  primaryRenderer: {fileID: 1370205080923928249}
+  catchUpPoint: {fileID: 706833228}
   minimumCatchUpDistance: 4
   onObjectCatchUp:
     m_PersistentCalls:
@@ -1097,11 +1127,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
---- !u!4 &8920830792174691510 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
-  m_PrefabInstance: {fileID: 1995882033732999728}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2472583089543852405 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4171086534962539333, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
@@ -1113,6 +1138,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fe50e120b30f04684cd0ea7b35deda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8920830792174691510 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6953527544449416838, guid: 4f7c5c84f6a0e104687ba40927367556, type: 3}
+  m_PrefabInstance: {fileID: 1995882033732999728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6079318516526560074
 PrefabInstance:
   m_ObjectHideFlags: 0

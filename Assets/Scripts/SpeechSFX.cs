@@ -33,7 +33,7 @@ public class SpeechSFX : MonoBehaviour
                 do
                 {
                     c = voiceClips[Random.Range(0, voiceClips.Count)];
-                } while (c != prevClip);
+                } while (c == prevClip);
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Game.UI
 {
@@ -10,6 +11,10 @@ namespace Game.UI
         
         private Vector3 _defaultsScale;
 
+
+        public event Action OnBubbleEnd;
+        
+        
         protected virtual void Start()
         {
             firstRenderer.sprite = null;
@@ -33,7 +38,7 @@ namespace Game.UI
         protected virtual void BubbleEnd()
         {
             gameObject.LeanScale(Vector3.zero, AnimationDuration).setDelay(1.5f).setEaseOutBack()
-                .setOnComplete(() => { gameObject.SetActive(false); });
+                .setOnComplete(() => { gameObject.SetActive(false);OnBubbleEnd?.Invoke(); });
         }
         
     }
