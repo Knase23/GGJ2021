@@ -5439,17 +5439,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &542741805 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4974652318040383834, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
-  m_PrefabInstance: {fileID: 3200669117597844169}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a0bb9868e337e240bd5b28f5854fc3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &561382506 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4275210162148483311, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
@@ -5462,10 +5451,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4834842781561766774, guid: ae3f4be97f0ac8748bd67a4e5e366b29, type: 3}
-      propertyPath: speech
-      value: 
-      objectReference: {fileID: 1766535178}
     - target: {fileID: 4834842781561766774, guid: ae3f4be97f0ac8748bd67a4e5e366b29, type: 3}
       propertyPath: interestedSources.Array.data[0]
       value: 
@@ -11161,17 +11146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaf4211cb8e8bd4c9e2fb641ef30975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1766535178 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1766535178, guid: ae3f4be97f0ac8748bd67a4e5e366b29, type: 3}
-  m_PrefabInstance: {fileID: 572623105}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a0bb9868e337e240bd5b28f5854fc3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1869302131
 GameObject:
   m_ObjectHideFlags: 0
@@ -11730,10 +11704,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
-    - target: {fileID: 7940960953112369106, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
-      propertyPath: speech
-      value: 
-      objectReference: {fileID: 542741805}
     - target: {fileID: 7940960953112369106, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
       propertyPath: onLearnNewGlyph.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
