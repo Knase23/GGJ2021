@@ -19,6 +19,7 @@ namespace Game
                 if (prevoiusParent.ContainsKey(other.gameObject))
                     return;
                 prevoiusParent.Add(other.gameObject, other.transform.parent);
+                other.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 other.transform.SetParent(parentingObject);
             }
         }
@@ -28,6 +29,7 @@ namespace Game
             if(prevoiusParent.ContainsKey(other.gameObject) == false)
                 return;
             other.transform.SetParent(prevoiusParent[other.gameObject]);
+            other.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
             prevoiusParent.Remove(other.gameObject);
         }
     }
