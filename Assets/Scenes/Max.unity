@@ -14970,11 +14970,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 259986265654510150, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.695
+      value: -15.33
       objectReference: {fileID: 0}
     - target: {fileID: 259986265654510150, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.126
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 259986265654510150, guid: 2e46538b16204cb438a9cb0762348e12, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15133,18 +15133,6 @@ PrefabInstance:
     - target: {fileID: 1370205080109937766, guid: 505ae484bf50936468c816b1a2b942cd, type: 3}
       propertyPath: m_Name
       value: Elevator_Monster
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370205080275611906, guid: 505ae484bf50936468c816b1a2b942cd, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370205080275611906, guid: 505ae484bf50936468c816b1a2b942cd, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370205080275611906, guid: 505ae484bf50936468c816b1a2b942cd, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 505ae484bf50936468c816b1a2b942cd, type: 3}
