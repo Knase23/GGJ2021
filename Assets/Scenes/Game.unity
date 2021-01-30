@@ -5618,6 +5618,10 @@ PrefabInstance:
       propertyPath: interestedSources.Array.data[0]
       value: 
       objectReference: {fileID: 561382506}
+    - target: {fileID: 6264786395297574683, guid: ae3f4be97f0ac8748bd67a4e5e366b29, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6840439446116026684, guid: ae3f4be97f0ac8748bd67a4e5e366b29, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.88

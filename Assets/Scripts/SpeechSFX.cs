@@ -15,20 +15,20 @@ public class SpeechSFX : MonoBehaviour
         _source = GetComponent<AudioSource>();
     }
 
-    public void Speak()
+    public void Speak(int min = 3, int max = 6)
     {
-        StartCoroutine(Speaking());
+        StartCoroutine(Speaking(min, max));
     }
 
-    private IEnumerator Speaking()
+    private IEnumerator Speaking(int min, int max)
     {
         AudioClip prevClip = null;
         AudioClip c = null;
 
 
-        for (int i = 0; i < Random.Range(3, 6); i++)
+        for (int i = 0; i < Random.Range(min, max); i++)
         {
-            if (i > 0)
+            if (i > 0 && max > 1)
             {
                 do
                 {

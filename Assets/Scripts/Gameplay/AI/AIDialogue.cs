@@ -94,6 +94,7 @@ namespace Game.Gameplay.AI
             if (glyph is ExpressionGlyph expressionGlyph)
             {
                 ExpressionBubble.DisplayExpression(expressionGlyph);
+                if(speech != null) speech.Speak(1,1);
             }
         }
 
@@ -111,7 +112,7 @@ namespace Game.Gameplay.AI
         public void Talk(Glyph glyph,Glyph glyph2 = null)
         {
             
-            if(speech != null) speech.Speak();
+            if(speech != null) speech.Speak(3,6);
             
             if (glyph == null) return;
             _latestGlyph = glyph;
