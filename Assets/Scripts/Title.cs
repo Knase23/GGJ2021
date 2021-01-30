@@ -11,14 +11,48 @@ public class Title : MonoBehaviour
 
     public AString aString;
 
+    private Coroutine textDisplayRoutine;
+
+    public string prevString;
+
     private void Start()
     {
         titleText = GetComponent<TextMeshProUGUI>();
+        titleText.text = String.Empty;
     }
 
     // Update is called once per frame
     void Update()
     {
-        titleText.text = aString.text;
+        if (prevString != aString.text)
+        {
+            prevString = aString.text;
+            if (textDisplayRoutine != null)
+            {
+                StopCoroutine(textDisplayRoutine);
+            }
+
+            textDisplayRoutine = StartCoroutine(ShowText());
+        }
+    }
+
+    public IEnumerator ShowText()
+    {
+        Debug.Log("showText");
+        string builtString = string.Empty;
+
+        do
+        {
+            var i = titleText.text.Length - 1;
+            if (i >= 0 && titleText.text.Length > i) titleText.text = titleText.text.Remove(i);
+            yield return new WaitForSeconds(0.035f);
+        } while (titleText.text.Length > 0);
+
+        foreach (var t in aString.text)
+        {
+            builtString += t;
+            titleText.text = builtString;
+            yield return new WaitForSeconds(0.06f);
+        }
     }
 }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0856bb317a6a92438519b5b18c418ea, type: 3}
   m_Name: Title
   m_EditorClassIdentifier: 
-  text: 
+  text: '"This creature has my rocket, I need to figure something out"'
