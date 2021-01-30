@@ -74,23 +74,33 @@ namespace Game.Gameplay.AI
                 actions[changeInBehaviour.onResponse]?.Invoke();
 
             currentAiBehaviour = changeInBehaviour.nextBehaviour; // Change our behavior to next one!
-            
-            
-            if (currentAiBehaviour.firstGlyph is LogicGlyph)
+
+            CheckCurrentGlyphs();
+
+        }
+
+        private void DoGlyphCheck(Glyph glyph)
+        {
+            if (glyph is LogicGlyph)
             {
                 Talk();
             }
-            if(currentAiBehaviour.firstGlyph is HieroGlyph)
+            if(glyph is HieroGlyph)
             {
                 Invoke(nameof(Talk), 0.5f);
             }
-            if (currentAiBehaviour.firstGlyph is ExpressionGlyph expressionGlyph)
+            if (glyph is ExpressionGlyph expressionGlyph)
             {
                 ExpressionBubble.DisplayExpression(expressionGlyph);
             }
-            
         }
 
+        public void CheckCurrentGlyphs()
+        {
+            DoGlyphCheck(currentAiBehaviour.firstGlyph);
+            DoGlyphCheck(currentAiBehaviour.secondGlyph);
+        }
+        
         public void Talk()
         {
             Talk(currentAiBehaviour.firstGlyph,currentAiBehaviour.secondGlyph);
@@ -148,5 +158,11 @@ namespace Game.Gameplay.AI
         {
             Gizmos.DrawWireSphere(transform.position, talkRange);
         }
+
+        public void SetCurrentBehaviour(AiBehaviour newBehaviour)
+        {
+            currentAiBehaviour = newBehaviour;
+        }
+        
     }
 }
