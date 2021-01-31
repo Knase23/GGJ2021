@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
   m_Name: Rocket_Monster_Release
   m_EditorClassIdentifier: 
-  firstGlyph: {fileID: 11400000, guid: b1ff2bad1aa36a749bab8d32f240f0ff, type: 2}
+  firstGlyph: {fileID: 11400000, guid: 118f806d370e203428286077b3cca9eb, type: 2}
   secondGlyph: {fileID: 0}
-  onHearingActions: []
+  onHearingActions:
+  - Realase
   onTalkerCompleteActions: []
   onAiTalkComplete: []
   expectedResponse:
