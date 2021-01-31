@@ -5114,6 +5114,26 @@ PrefabInstance:
       propertyPath: AiActions.Array.data[3].actions.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 561382506}
+    - target: {fileID: 6370542834215453281, guid: cf32bc7406ed52b49bc0532e524f8971, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370542834391366184, guid: cf32bc7406ed52b49bc0532e524f8971, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370542834964224823, guid: cf32bc7406ed52b49bc0532e524f8971, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370542835029900804, guid: cf32bc7406ed52b49bc0532e524f8971, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370542836128812981, guid: cf32bc7406ed52b49bc0532e524f8971, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6989181978820402477, guid: cf32bc7406ed52b49bc0532e524f8971, type: 3}
       propertyPath: interestedSources.Array.data[1]
       value: 
