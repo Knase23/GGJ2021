@@ -38,7 +38,6 @@ public class Title : MonoBehaviour
 
     public IEnumerator ShowText()
     {
-        Debug.Log("showText");
         string builtString = string.Empty;
 
         do
