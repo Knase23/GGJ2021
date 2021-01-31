@@ -1409,11 +1409,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1115971344 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5738858555843636216, guid: cf32bc7406ed52b49bc0532e524f8971, type: 3}
-  m_PrefabInstance: {fileID: 5434512924598733726}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1254876153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,11 +1647,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1384765622 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1712411659671249664, guid: cf32bc7406ed52b49bc0532e524f8971, type: 3}
-  m_PrefabInstance: {fileID: 5434512924598733726}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1453587732
 GameObject:
   m_ObjectHideFlags: 0
@@ -6998,48 +6988,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1714033145 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6300164760898241520, guid: cf32bc7406ed52b49bc0532e524f8971, type: 3}
-  m_PrefabInstance: {fileID: 5434512924598733726}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1714033147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714033145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0b56cd0a8d712e469df9e498f4f35e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdingParent: {fileID: 1115971344}
-  titleText: {fileID: 11400000, guid: c9635c5759b846a4aabcb371ae3b278f, type: 2}
-  releasedParent: {fileID: 1384765622}
---- !u!114 &1714033148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714033145}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71491eb900ff42aca79ea1dc7e82ca24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _latestGlyph: {fileID: 0}
-  _latestPrevGlyph: {fileID: 0}
-  talkRange: 10
-  speech: {fileID: 0}
-  talkBubble: {fileID: 0}
-  expressionBubble: {fileID: 0}
-  firstBehaviour: {fileID: 11400000, guid: d422a700b6ff66f49aefa1ecddee5042, type: 2}
-  interestedSources: []
-  AiActions: []
-  currentAiBehaviour: {fileID: 0}
 --- !u!114 &1743551705 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8837963273483872251, guid: 68cc83ee73833eb47b2c058eb78f54d7, type: 3}
