@@ -26,9 +26,7 @@ namespace Game.Gameplay.AI
 
         public List<GameObject> interestedSources = new List<GameObject>();
 
-        public List<NameToActions> onHearingActions = new List<NameToActions>();
-        public List<NameToActions> onTalkerComplete = new List<NameToActions>();
-        public List<NameToActions> onAiTalkComplete = new List<NameToActions>();
+        [FormerlySerializedAs("onAiTalkComplete")] public List<NameToActions> AiActions = new List<NameToActions>();
 
         public AiBehaviour currentAiBehaviour;
 
@@ -59,7 +57,7 @@ namespace Game.Gameplay.AI
 
             foreach (string action in currentAiBehaviour.onAiTalkComplete)
             {
-                GoThroughActionList(onAiTalkComplete, action);
+                GoThroughActionList(AiActions, action);
             }
         }
 
@@ -126,7 +124,7 @@ namespace Game.Gameplay.AI
                 //Go through potential actions the
                 foreach (string action in currentAiBehaviour.onHearingActions)
                 {
-                    GoThroughActionList(onHearingActions, action);
+                    GoThroughActionList(AiActions, action);
                 }
 
                 //If AI:s Glyphs are LogicGlyphs they should be sent Directly
@@ -164,7 +162,7 @@ namespace Game.Gameplay.AI
 
             foreach (string action in currentAiBehaviour.onTalkerCompleteActions)
             {
-                GoThroughActionList(onTalkerComplete, action);
+                GoThroughActionList(AiActions, action);
             }
         }
 

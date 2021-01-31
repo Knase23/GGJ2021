@@ -100,9 +100,7 @@ MonoBehaviour:
   firstBehaviour: {fileID: 11400000, guid: 2aa9370ab3d15664f8784126c188faaf, type: 2}
   interestedSources:
   - {fileID: 0}
-  onHearingActions: []
-  onTalkerComplete: []
-  onAiTalkComplete:
+  AiActions:
   - name: Run To Holey
     actions:
       m_PersistentCalls:

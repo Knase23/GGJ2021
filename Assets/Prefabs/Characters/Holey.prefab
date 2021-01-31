@@ -78,24 +78,7 @@ MonoBehaviour:
   firstBehaviour: {fileID: 11400000, guid: 2b0927ddd9a69954b83dfe02b1abd17d, type: 2}
   interestedSources:
   - {fileID: 0}
-  onHearingActions: []
-  onTalkerComplete:
-  - name: HiddenTalk
-    actions:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 714298869674255316}
-          m_TargetAssemblyTypeName: Game.Gameplay.AI.AIDialogue, GGJProject
-          m_MethodName: Talk
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  AiActions:
   - name: Go Down
     actions:
       m_PersistentCalls:
@@ -112,7 +95,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  onAiTalkComplete: []
   currentAiBehaviour: {fileID: 0}
 --- !u!114 &3043205722772790325
 MonoBehaviour:
