@@ -12,6 +12,7 @@ public class TitleTriggerBox : MonoBehaviour
 
     public AString title;
 
+    public bool inactive;
     private bool triggered;
 
     public List<TitleTriggerBox> newActivatedTriggerBoxes;
@@ -20,15 +21,25 @@ public class TitleTriggerBox : MonoBehaviour
     void Start()
     {
         GetComponent<SpriteRenderer>().color = Color.clear;
+        foreach (var triggerbox in newActivatedTriggerBoxes)
+        {
+            triggerbox.inactive = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (triggered) return;
+        if (inactive) return;
         if (other.CompareTag("Player"))
         {
             triggered = true;
             title.text = message;
+            foreach (var triggerbox in newActivatedTriggerBoxes)
+            {
+                triggerbox.inactive = false;
+            }
+
             Invoke(nameof(AutoRemove), autoRemoveTime);
         }
     }
