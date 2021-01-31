@@ -5083,7 +5083,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a18cb62c2a8987141a079fdb1816e3a5, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5227,7 +5227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _latestGlyph: {fileID: 0}
   _latestPrevGlyph: {fileID: 0}
-  talkRange: 10
+  talkRange: 5
   speech: {fileID: 3000867038710990164}
   talkBubble: {fileID: 3773202297439952651}
   expressionBubble: {fileID: 604996998243067310}
@@ -5283,6 +5283,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Need Player Help
+    actions:
+      m_PersistentCalls:
+        m_Calls: []
   currentAiBehaviour: {fileID: 0}
 --- !u!114 &2462517978876321112
 MonoBehaviour:

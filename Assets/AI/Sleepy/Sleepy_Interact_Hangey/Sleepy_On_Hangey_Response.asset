@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Sleepy_On_Hangey_Response
   m_EditorClassIdentifier: 
   firstGlyph: {fileID: 11400000, guid: cffb04d0e70c61140b81dc500a180393, type: 2}
-  secondGlyph: {fileID: 11400000, guid: dd93cf89dd5ef654898d0f540a3d1389, type: 2}
-  onHearingActions: []
-  onTalkerCompleteActions:
+  secondGlyph: {fileID: 11400000, guid: 757ea422221990d438cde35f97a0badc, type: 2}
+  onHearingActions:
   - Need Player Help
+  onTalkerCompleteActions: []
   onAiTalkComplete: []
   expectedResponse: []
   unexpectedResponse:
     responseWord: {fileID: 0}
-    nextBehaviour: {fileID: 0}
+    nextBehaviour: {fileID: 11400000, guid: 099bb043c42571a439b9ba414435013d, type: 2}

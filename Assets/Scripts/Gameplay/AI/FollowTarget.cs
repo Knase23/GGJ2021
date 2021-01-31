@@ -97,7 +97,7 @@ namespace Game.Gameplay.AI
         private void ResetMove()
         {
             _moveInterface.SetSpeed(_defaultSpeed);
-            //controller.SetMoveDirection(Vector2.zero);
+            controller.SetMoveDirection(Vector2.zero);
         }
     }
 }

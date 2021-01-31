@@ -55,6 +55,15 @@ public class Fade : MonoBehaviour
         curtain.CrossFadeAlpha(0, FadeOutTime, true);
     }
 
+    public void FadeIn(float duration)
+    {
+        curtain.CrossFadeAlpha(1, duration, true);
+    }
+    public void FadeOut(float duration)
+    {
+        curtain.CrossFadeAlpha(0, duration, true);
+    }
+    
     private IEnumerator Fading()
     {
         SetToTransparent();
