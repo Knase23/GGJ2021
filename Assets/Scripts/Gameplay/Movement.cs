@@ -18,13 +18,14 @@ namespace Game
 
         public bool allowLeftRightMovement = true;
         public bool allowUpDownMovement = false;
+        
         IMoveController Controller
         {
             get { return moveController as IMoveController; }
         }
 
         private Animator _animator;
-
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -91,6 +92,7 @@ namespace Game
 
         public Vector2 GroundOffset(Vector2 moveDirection)
         {
+            
             moveDirection.Normalize();
             //Check 
             float distance = 2;

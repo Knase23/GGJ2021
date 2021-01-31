@@ -62,7 +62,7 @@ namespace Game.Gameplay.Player
             Talk(latestTalk);
         }
 
-        public void Talk(Glyph glyph, Glyph glyph2 = null)
+        public void Talk(Glyph glyph)
         {
             if (glyph is HieroGlyph hieroglyph)
             {
@@ -70,8 +70,7 @@ namespace Game.Gameplay.Player
                 latestTalk = hieroglyph;
                 if (previousWord)
                 {
-                    talkBubble.ShowWords(latestTalk, previousWord);
-                    Debug.Log("Two Word");
+                    talkBubble.ShowWords(previousWord,latestTalk);
                     ResetSecondWord();
                 }
                 else
@@ -108,6 +107,13 @@ namespace Game.Gameplay.Player
             return transform.position;
         }
 
+        private void SetupSecondWord()
+        {
+            talkBubble.BubbleEnd();
+            talkBubble.SetSecondWordAnimation(true);
+            talkBubble.OnBubbleStartComplete -= SetupSecondWord;
+
+        }
         public void OnHearing(ITalker talker)
         {
             Glyph glyph = talker.GetLatestGlyph();
@@ -115,8 +121,8 @@ namespace Game.Gameplay.Player
             if (glyph is LogicGlyph logicGlyph)
             {
                 //Do Logic with it!
-                
                 WaitingForSecondWord(true);
+                talkBubble.OnBubbleStartComplete += SetupSecondWord;
             }
             else
             {
@@ -136,7 +142,6 @@ namespace Game.Gameplay.Player
             {
                 OnSpeechComplete?.Invoke();
                 OnSpeechComplete = null;
-
             }
             
         }

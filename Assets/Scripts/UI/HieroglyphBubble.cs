@@ -18,29 +18,36 @@ namespace Game.UI
         public void SetExpectedSecond(bool state)
         {
             _expectedSecond = state;
+
+            if (_expectedSecond == false)
+            {
+                base.BubbleEnd();
+            }
         }
 
+        public void SetSecondWordAnimation(bool state)
+        {
+            bubbleAnimator.SetBool("SecondWord", state);
+        }
+        
         public void ShowWords(HieroGlyph firstWord = null, HieroGlyph secondWord = null)
         {
             if (gameObject.activeInHierarchy == false)
             {
                 BubbleStartEffect();
-                bubbleAnimator.SetBool("SecondWord", secondWord != null);
             }
 
+            SetSecondWordAnimation(secondWord != null);
             firstRenderer.sprite = firstWord?.talkImage;
             secondWordRenderer.sprite = secondWord?.talkImage;
-
-            Invoke(nameof(BubbleEnd), 1f);
+            BubbleEnd();
         }
 
-        protected override void BubbleEnd()
+        public override void BubbleEnd()
         {
-            if (_expectedSecond)
-            {
-                bubbleAnimator.SetBool("SecondWord", true);
-            }
-            gameObject.LeanCancel();
+            if(_expectedSecond && completedStart)
+                gameObject.LeanCancel();
+            
             base.BubbleEnd();
         }
     }

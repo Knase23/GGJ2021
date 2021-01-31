@@ -5066,15 +5066,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71491eb900ff42aca79ea1dc7e82ca24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _latestGlyph: {fileID: 0}
+  _latestPrevGlyph: {fileID: 0}
   talkRange: 10
   speech: {fileID: 1766535178}
   talkBubble: {fileID: 3393925450471987047}
-  ExpressionBubble: {fileID: 3965196912678785094}
-  FirstBehaviour: {fileID: 11400000, guid: 7dd967581bb04ef4585f4793627d29f3, type: 2}
-  actions: []
-  currentAiBehaviour: {fileID: 0}
+  expressionBubble: {fileID: 3965196912678785094}
+  firstBehaviour: {fileID: 11400000, guid: 7dd967581bb04ef4585f4793627d29f3, type: 2}
   interestedSources:
   - {fileID: 0}
+  onHearingActions: []
+  onTalkerComplete: []
+  onAiTalkComplete: []
+  currentAiBehaviour: {fileID: 0}
 --- !u!82 &1766535179
 AudioSource:
   m_ObjectHideFlags: 0

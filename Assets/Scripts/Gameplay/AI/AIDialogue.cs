@@ -1,36 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Game.Core;
 using Game.UI;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Game.Gameplay.AI
 {
     public class AIDialogue : MonoBehaviour, IHearing, ITalker
     {
-        private Glyph _latestGlyph = null;
+        public Glyph _latestGlyph = null;
+        public Glyph _latestPrevGlyph = null;
+        private bool _secondWord = false;
+        private bool _AlredySaidSecondWord = false;
         public float talkRange = 10;
 
         public SpeechSFX speech;
 
         public HieroglyphBubble talkBubble;
-        public ExpressionBubble ExpressionBubble;
+        public ExpressionBubble expressionBubble;
 
-        public AiBehaviour FirstBehaviour;
+        public AiBehaviour firstBehaviour;
 
-        public List<UnityEvent> actions = new List<UnityEvent>();
+        public List<GameObject> interestedSources = new List<GameObject>();
+
+        public List<NameToActions> onHearingActions = new List<NameToActions>();
+        public List<NameToActions> onTalkerComplete = new List<NameToActions>();
+        public List<NameToActions> onAiTalkComplete = new List<NameToActions>();
 
         public AiBehaviour currentAiBehaviour;
 
-        public GameObject[] interestedSources;
+        private event Action OnSpeechComplete;
+
+
+        [Serializable]
+        public class NameToActions
+        {
+            public string name;
+            public UnityEvent actions = new UnityEvent();
+        }
 
 
         private void Start()
         {
-            currentAiBehaviour = FirstBehaviour;
-        
+            currentAiBehaviour = firstBehaviour;
+            talkBubble.OnBubbleEnd += OnAiTalkComplete;
         }
+
+        public void OnAiTalkComplete()
+        {
+            if (talkBubble.gameObject.activeInHierarchy == false)
+            {
+                OnSpeechComplete?.Invoke();
+                OnSpeechComplete = null;
+            }
+
+            foreach (string action in currentAiBehaviour.onAiTalkComplete)
+            {
+                GoThroughActionList(onAiTalkComplete, action);
+            }
+        }
+
+        // ReSharper disable Unity.PerformanceAnalysis
+        public void GoThroughActionList(IEnumerable<NameToActions> actionsList, string action)
+        {
+            bool foundAction = false;
+            foreach (NameToActions nameToActions in actionsList)
+            {
+                if (nameToActions.name == action)
+                {
+                    nameToActions.actions?.Invoke();
+                    Debug.Log($"AI called: {action} action", gameObject);
+                    foundAction = true;
+                    break;
+                }
+            }
+
+            if (foundAction == false)
+                Debug.Log($"AI don't have a Action called: {action}", gameObject);
+        }
+
 
         private void OnEnable()
         {
@@ -39,7 +90,7 @@ namespace Game.Gameplay.AI
 
         private void OnDisable()
         {
-            DialogueSystem.AddIHearingToList(this);
+            DialogueSystem.RemoveIHearingToList(this);
         }
 
         public Vector2 GetLocation()
@@ -47,11 +98,10 @@ namespace Game.Gameplay.AI
             return transform.position;
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public void OnHearing(ITalker talker)
         {
-            //Debug.Log($"Heard {talker.GetName()} say: {talker.GetLatestWord()}");
-            Glyph glyph = talker.GetLatestGlyph(); // Get what it said
-
+            //Check if the Talker is someone i want to listen to!
             bool isInterested = false;
             foreach (GameObject interestedSource in interestedSources)
             {
@@ -64,76 +114,116 @@ namespace Game.Gameplay.AI
 
             if (isInterested == false) return;
 
-            HieroGlyph hieroGlyph = null;
+            //Process the word
+            Glyph glyph = talker.GetLatestGlyph(); // Get what it said
 
-            hieroGlyph = glyph as HieroGlyph;
-
-            AiBehaviour.BehaviourChange
-                changeInBehaviour = currentAiBehaviour.GetResponse(hieroGlyph); // Check how we react
-
-            if (changeInBehaviour.onResponse > -1 && changeInBehaviour.onResponse < actions.Count
-            ) // Check if their is a action relate
-                actions[changeInBehaviour.onResponse]?.Invoke();
-
-            currentAiBehaviour = changeInBehaviour.nextBehaviour; // Change our behavior to next one!
-
-            //Wait to for speech complete
-            talker.SubscribeToOnSpeechComplete(CheckCurrentGlyphs);
-        }
-
-        private void DoGlyphCheck(Glyph glyph)
-        {
-            if (glyph is LogicGlyph)
+            if (glyph is HieroGlyph hieroGlyph && currentAiBehaviour != null)
             {
-                Talk();
-            }
-            if(glyph is HieroGlyph)
-            {
-                Invoke(nameof(Talk), 0.5f);
-            }
-            if (glyph is ExpressionGlyph expressionGlyph)
-            {
-                ExpressionBubble.DisplayExpression(expressionGlyph);
-            }
-        }
+                AiBehaviour.BehaviourChange
+                    changeInBehaviour = currentAiBehaviour.GetResponse(hieroGlyph); // Check how we react
+                currentAiBehaviour = changeInBehaviour.nextBehaviour; // Change our behavior to next one!
 
-        public void CheckCurrentGlyphs()
-        {
-            DoGlyphCheck(currentAiBehaviour.firstGlyph);
-            DoGlyphCheck(currentAiBehaviour.secondGlyph);
-        }
-        
-        public void Talk()
-        {
-            Talk(currentAiBehaviour.firstGlyph,currentAiBehaviour.secondGlyph);
-        }
+                //Go through potential actions the
+                foreach (string action in currentAiBehaviour.onHearingActions)
+                {
+                    GoThroughActionList(onHearingActions, action);
+                }
 
-        public void Talk(Glyph glyph,Glyph glyph2 = null)
-        {
-            
-            if(speech != null) speech.Speak();
-            
-            if (glyph == null) return;
-            _latestGlyph = glyph;
-            if (glyph is HieroGlyph hieroglyph)
-            {
-                HieroGlyph hieroGlyph2 = glyph2 as HieroGlyph;
+                //If AI:s Glyphs are LogicGlyphs they should be sent Directly
+                if (currentAiBehaviour.firstGlyph is LogicGlyph)
+                {
+                    Talk(currentAiBehaviour.firstGlyph);
+                }
+                if (currentAiBehaviour.secondGlyph is LogicGlyph)
+                {
+                    Talk(currentAiBehaviour.secondGlyph);
+                }
 
-                talkBubble.SetExpectedSecond(hieroGlyph2 != null);
-                talkBubble.ShowWords(hieroglyph, hieroGlyph2);
-                DialogueSystem.Talking(this);
+                talker.SubscribeToOnSpeechComplete(OnTalkerSpeechComplete); //Subscribe 
             }
 
-            if (glyph is ExpressionGlyph expressionGlyph)
-            {
-                ExpressionBubble.DisplayExpression(expressionGlyph);
-            }
-                
             if (glyph is LogicGlyph logicGlyph)
             {
+                //Send second word
+                WaitingForSecondWord(true);
+                Talk(currentAiBehaviour.secondGlyph);
+            }
+            else
+            {
+                WaitingForSecondWord(false);
+            }
+        }
+
+        public void OnTalkerSpeechComplete()
+        {
+            if (_latestPrevGlyph == null)
+            {
+                Debug.Log($"{GetName()}: After Talker Complete Talk", gameObject);
+                Talk();
+            }
+
+            foreach (string action in currentAiBehaviour.onTalkerCompleteActions)
+            {
+                GoThroughActionList(onTalkerComplete, action);
+            }
+        }
+
+        public void Talk()
+        {
+            Talk(currentAiBehaviour.firstGlyph);
+            //Invoke the second one after a few seconds
+            Invoke(nameof(TalkSecondGlyph),0.5f);
+        }
+
+        private void TalkSecondGlyph()
+        {
+            if (_AlredySaidSecondWord)
+            {
+                _AlredySaidSecondWord = false;
+                return;
+            }
+            
+            if(currentAiBehaviour.secondGlyph is HieroGlyph)
+                WaitingForSecondWord(true);
+            
+            Talk(currentAiBehaviour.secondGlyph);
+        }
+
+        public void Talk(Glyph glyph)
+        {
+            if (glyph == null) return;
+
+            if (glyph is HieroGlyph hieroglyph)
+            {
+                _latestGlyph = glyph;
+                if (_latestPrevGlyph is HieroGlyph latestPrevGlyph)
+                {
+                    _AlredySaidSecondWord = true;
+                    talkBubble.ShowWords(latestPrevGlyph,hieroglyph);
+                    ResetSecondWord();
+                }
+                else
+                {
+                    talkBubble.ShowWords(hieroglyph);
+                }
+
+                DialogueSystem.Talking(this);
+                if (speech != null) speech.Speak();
+            }
+
+            if (glyph is ExpressionGlyph expressionGlyph)
+            {
+                _latestGlyph = glyph;
+                expressionBubble.DisplayExpression(expressionGlyph);
+            }
+
+            if (glyph is LogicGlyph logicGlyph)
+            {
+                _latestGlyph = glyph;
                 DialogueSystem.Talking(this);
             }
         }
+
         public string GetName()
         {
             return gameObject.name;
@@ -141,11 +231,21 @@ namespace Game.Gameplay.AI
 
         public void WaitingForSecondWord(bool state)
         {
+            _secondWord = state;
+            _latestPrevGlyph = state ? _latestGlyph : null;
+            talkBubble.SetExpectedSecond(_secondWord);
+        }
+
+        private void ResetSecondWord()
+        {
+            _secondWord = false;
+            _latestPrevGlyph = null;
+            talkBubble.SetExpectedSecond(_secondWord);
         }
 
         public void SubscribeToOnSpeechComplete(Action action)
         {
-            
+            OnSpeechComplete += action;
         }
 
         public GameObject GetSource()
@@ -172,6 +272,17 @@ namespace Game.Gameplay.AI
         {
             currentAiBehaviour = newBehaviour;
         }
-        
+
+        public void AddInterestedSource(GameObject gameObject)
+        {
+            if (interestedSources.Contains(gameObject) == false)
+                interestedSources.Add(gameObject);
+        }
+
+        public void RemoveInterestedSource(GameObject gameObject)
+        {
+            if (interestedSources.Contains(gameObject))
+                interestedSources.Remove(gameObject);
+        }
     }
 }

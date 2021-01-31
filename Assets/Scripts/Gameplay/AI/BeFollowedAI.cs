@@ -54,13 +54,13 @@ namespace Game.Gameplay.AI
                     //Move in the direction off
                     controller.SetMoveDirection(direction);
                     nearEnough = true;
+                    onObjectCatchUp?.Invoke();
                 }
                 else if (primaryRenderer.isVisible == false) // Hide the scene view, when testing. 
                 {
                     // Character stops moving
                     controller.SetMoveDirection(Vector2.zero);
                     nearEnough = false;
-                    Debug.Log("Not Visible");
                 }
 
                 yield return new WaitForEndOfFrame();
@@ -68,6 +68,7 @@ namespace Game.Gameplay.AI
             }
 
             Debug.Log("End Walking");
+            onReachedTarget?.Invoke();
             transform.position = target.position;
             controller.SetMoveDirection(Vector2.zero);
             _walkRoutine = null;

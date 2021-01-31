@@ -18,6 +18,8 @@ namespace Game.Gameplay.AI
         public float maximumDistanceAway = 3f;
         public AIController controller;
 
+        public Animator _Animator;
+        
         private IMove _moveInterface;
         private IMove _moveTargetInterface;
 
@@ -28,6 +30,7 @@ namespace Game.Gameplay.AI
         private void Start()
         {
             controller ??= GetComponent<AIController>();
+            _Animator ??= GetComponent<Animator>();
             _moveInterface = GetComponent<IMove>();
             _defaultSpeed = _moveInterface.GetSpeed();
         }
@@ -72,6 +75,10 @@ namespace Game.Gameplay.AI
             _moveTargetInterface = target.GetComponent<IMove>();
             
             _shouldFollow = true;
+            
+            if(_Animator)
+                _Animator.SetBool("Follow",true);
+            
             onStartFollow?.Invoke();
             if (_followRoutine == null)
                 _followRoutine = StartCoroutine(FollowLogic());
@@ -79,6 +86,9 @@ namespace Game.Gameplay.AI
 
         public void StopFollow()
         {
+            if(_Animator)
+                _Animator.SetBool("Follow",false);
+            
             _shouldFollow = false;
             ResetMove();
             onStopFollow?.Invoke();

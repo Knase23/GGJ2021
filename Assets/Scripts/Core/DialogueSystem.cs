@@ -23,34 +23,41 @@ namespace Game
 
         public static void Talking(ITalker talker)
         {
-            //Debug.Log($"{talker.GetName()} is saying:{talker.GetLatestWord()}");
+            Debug.Log($"{talker.GetName()} is saying:{talker.GetLatestGlyph()}", talker.GetSource());
             foreach (IHearing listener in Listeners)
             {
                 if(talker == listener) continue;
 
                 float distance = Vector2.Distance(listener.GetLocation(), talker.GetLocation());
                 
-                if (distance < talker.GetTalkRange() + 2)
+                if (distance < talker.GetTalkRange())
                 {
+                    Debug.Log($"{listener.GetName()} is Hearing:{talker.GetLatestGlyph()}", listener.GetSource());
                     listener.OnHearing(talker);
                 }
             }
         }
     }
 
-    public interface IHearing : ILocation
+    public interface IHearing : ILocation,IName,IGetSource
     {
         void OnHearing(ITalker talker);
     }
 
-    public interface ITalker : ILocation
+    public interface IGetSource
     {
         GameObject GetSource();
+    }
+    public interface IName
+    {
+        string GetName();
+    }
+    public interface ITalker : ILocation,IName,IGetSource
+    {
         Glyph GetLatestGlyph();
         float GetTalkRange();
         void Talk();
-        void Talk(Glyph glyph, Glyph glyph2 = null);
-        string GetName();
+        void Talk(Glyph glyph);
         void WaitingForSecondWord(bool state);
 
         void SubscribeToOnSpeechComplete(Action action);

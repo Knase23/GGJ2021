@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstGlyph: {fileID: 11400000, guid: 757ea422221990d438cde35f97a0badc, type: 2}
   secondGlyph: {fileID: 11400000, guid: 0e83b608093171d4dacccf88fe6fd01b, type: 2}
+  onHearingActions: []
+  onTalkerCompleteActions:
+  - Go Up
   expectedResponse:
   - responseWord: {fileID: 11400000, guid: 08021baaaced4314fa6bf78d34feb026, type: 2}
     nextBehaviour: {fileID: 11400000, guid: 57787df2fa190c34aad00ef39fd247c1, type: 2}
-    onResponse: -1
   unexpectedResponse:
     responseWord: {fileID: 0}
     nextBehaviour: {fileID: 11400000}
-    onResponse: -1

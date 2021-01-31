@@ -17,6 +17,9 @@ public class SpeechSFX : MonoBehaviour
 
     public void Speak()
     {
+        if(voiceClips.Count == 0)
+            return;
+        
         StartCoroutine(Speaking());
     }
 

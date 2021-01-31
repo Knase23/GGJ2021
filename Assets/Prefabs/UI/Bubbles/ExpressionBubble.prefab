@@ -123,7 +123,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7877141901317044939}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -148,3 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstRenderer: {fileID: 1582971034477765608}
   bubbleAnimator: {fileID: 878713879774704743}
+  animationInDuration: 0.5
+  animationOutDuration: 0.5
+  animationOutDelay: 1.5

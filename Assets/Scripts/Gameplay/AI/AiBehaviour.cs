@@ -11,9 +11,17 @@ namespace Game.Gameplay.AI
     {
         public Glyph firstGlyph;
         public Glyph secondGlyph;
-        public List<BehaviourChange> expectedResponse = new List<BehaviourChange>();
 
+        [Tooltip("Runs Actions, when deciding right when changing Behaviour")]
+        public List<string> onHearingActions = new List<string>();
+        [Tooltip("Runs Actions, after Talkers bubble is gone")]
+        public List<string> onTalkerCompleteActions = new List<string>();
+        [Tooltip("Runs Actions, after the AIs Talkers bubble is gone")]
+        public List<string> onAiTalkComplete = new List<string>();
+        
+        
         // Ai knows how to respond
+        public List<BehaviourChange> expectedResponse = new List<BehaviourChange>();
         public BehaviourChange unexpectedResponse = new BehaviourChange();
 
         [Serializable]
@@ -21,21 +29,18 @@ namespace Game.Gameplay.AI
         {
             public Glyph responseWord;
             public AiBehaviour nextBehaviour;
-            public int onResponse = -1; // It is connected to unityEvents that are stored in AIDialogue
         }
 
         public BehaviourChange GetResponse(HieroGlyph word)
         {
-            //Go through expectedResponse
+
             foreach (BehaviourChange behaviourChange in expectedResponse)
             {
                 if (behaviourChange.responseWord == word)
                 {
-                    //Debug.Log("Expected Response");
                     return behaviourChange;
                 }
             }
-            //Debug.Log("No Expected Response found");
             return unexpectedResponse;
         }
 

@@ -11,9 +11,14 @@ namespace Game.UI
         
         private Vector3 _defaultsScale;
 
-
-        public event Action OnBubbleEnd;
+        public float animationInDuration = 0.5f;
         
+        public float animationOutDuration = 0.5f;
+        public float animationOutDelay = 1.5f;
+        public event Action OnBubbleEnd;
+        public event Action OnBubbleStartComplete;
+        protected bool completedStart;
+        protected bool startedEnd;
         
         protected virtual void Start()
         {
@@ -22,23 +27,50 @@ namespace Game.UI
             gameObject.SetActive(false);
             _defaultsScale = transform.localScale;
             transform.localScale = Vector3.zero;
+            OnBubbleStartComplete += () => completedStart = true;
         }
-        protected virtual void BubbleStartEffect()
+        public virtual void BubbleStartEffect()
         {
             if (gameObject.activeInHierarchy == false)
             {
                 gameObject.SetActive(true);
                 gameObject.LeanCancel();
             }
-            transform.localScale = Vector3.zero;
-            gameObject.LeanScale(_defaultsScale, 0.5f).setEaseOutBack();
+            if (completedStart == false)
+            {
+                transform.localScale = Vector3.zero;
+                gameObject.LeanScale(_defaultsScale, animationInDuration).setEaseOutBack()
+                    .setOnComplete(() => OnBubbleStartComplete?.Invoke());
+            }
+            else
+            {
+                transform.localScale = _defaultsScale;
+            }
         }
-
-        protected const float AnimationDuration = 0.5f;
-        protected virtual void BubbleEnd()
+        
+        public virtual void BubbleEnd()
         {
-            gameObject.LeanScale(Vector3.zero, AnimationDuration).setDelay(1.5f).setEaseOutBack()
-                .setOnComplete(() => { gameObject.SetActive(false);OnBubbleEnd?.Invoke(); });
+            if(gameObject.activeInHierarchy == false) return;
+            
+            if(startedEnd == false) 
+                startedEnd = true;
+            else if (completedStart)
+            {
+                Debug.Log("Bubble End Lean Cancel");
+                gameObject.LeanCancel();
+                transform.localScale = _defaultsScale;
+            }
+            Debug.Log("Bubble End Lean",gameObject);
+            gameObject.LeanScale(Vector3.zero, animationOutDuration).setDelay(animationOutDelay).setEaseOutBack()
+                .setOnComplete(() =>
+                {
+                    if(bubbleAnimator.gameObject.activeInHierarchy)
+                        bubbleAnimator.Play("Bubble_OneWord");
+                    gameObject.SetActive(false);
+                    OnBubbleEnd?.Invoke();
+                    completedStart = false;
+                    startedEnd = false;
+                });
         }
         
     }

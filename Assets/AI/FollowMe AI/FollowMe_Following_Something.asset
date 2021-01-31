@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
   m_Name: FollowMe_Following_Something
   m_EditorClassIdentifier: 
-  firstGlyph: {fileID: 0}
-  secondGlyph: {fileID: 0}
-  expectedResponse:
-  - responseWord: {fileID: 0}
-    nextBehaviour: {fileID: 11400000, guid: 2aa9370ab3d15664f8784126c188faaf, type: 2}
-    onResponse: 1
+  firstGlyph: {fileID: 11400000, guid: 1563313b68991e04db072ca74299127d, type: 2}
+  secondGlyph: {fileID: 11400000, guid: 0e83b608093171d4dacccf88fe6fd01b, type: 2}
+  onHearingActions: []
+  onTalkerCompleteActions: []
+  onAiTalkComplete:
+  - Run To Holey
+  expectedResponse: []
   unexpectedResponse:
     responseWord: {fileID: 0}
     nextBehaviour: {fileID: 11400000}
-    onResponse: -1

@@ -10,16 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
-  m_Name: Elevator_Confirm_Down
+  m_Name: FollowMe_Tell_To_Holey
   m_EditorClassIdentifier: 
   firstGlyph: {fileID: 11400000, guid: 08021baaaced4314fa6bf78d34feb026, type: 2}
-  secondGlyph: {fileID: 11400000, guid: 0e83b608093171d4dacccf88fe6fd01b, type: 2}
+  secondGlyph: {fileID: 11400000, guid: cffb04d0e70c61140b81dc500a180393, type: 2}
   onHearingActions: []
-  onTalkerCompleteActions:
-  - Go Down
-  expectedResponse:
-  - responseWord: {fileID: 11400000, guid: 757ea422221990d438cde35f97a0badc, type: 2}
-    nextBehaviour: {fileID: 11400000, guid: f4d4a0803f1206a40a39c8c733d849e8, type: 2}
+  onTalkerCompleteActions: []
+  expectedResponse: []
   unexpectedResponse:
     responseWord: {fileID: 0}
-    nextBehaviour: {fileID: 11400000}
+    nextBehaviour: {fileID: 11400000, guid: a93ed00156545eb49a51e6ad3fd8bca5, type: 2}

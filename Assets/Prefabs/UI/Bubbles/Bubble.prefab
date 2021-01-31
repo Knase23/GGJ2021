@@ -230,6 +230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstRenderer: {fileID: 2270706688472077570}
   bubbleAnimator: {fileID: 5325577635718263611}
+  animationInDuration: 0.5
+  animationOutDuration: 0.5
+  animationOutDelay: 2.5
   secondWordRenderer: {fileID: 6029536273985763597}
 --- !u!1 &5994727400538360986
 GameObject:
