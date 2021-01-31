@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstGlyph: {fileID: 11400000, guid: 0e83b608093171d4dacccf88fe6fd01b, type: 2}
   secondGlyph: {fileID: 0}
+  onHearingActions: []
+  onTalkerCompleteActions: []
+  onAiTalkComplete: []
   expectedResponse:
   - responseWord: {fileID: 11400000, guid: 757ea422221990d438cde35f97a0badc, type: 2}
-    nextBehaviour: {fileID: 11400000, guid: f4d4a0803f1206a40a39c8c733d849e8, type: 2}
-    onResponse: -1
+    nextBehaviour: {fileID: 11400000, guid: dc51d7a4c0c2bee499e2d35d7e3347a4, type: 2}
   - responseWord: {fileID: 11400000, guid: 08021baaaced4314fa6bf78d34feb026, type: 2}
-    nextBehaviour: {fileID: 11400000, guid: 57787df2fa190c34aad00ef39fd247c1, type: 2}
-    onResponse: -1
+    nextBehaviour: {fileID: 11400000, guid: 4376564f9d798684cb921f733a9593e3, type: 2}
   unexpectedResponse:
     responseWord: {fileID: 0}
     nextBehaviour: {fileID: 0}
-    onResponse: -1
