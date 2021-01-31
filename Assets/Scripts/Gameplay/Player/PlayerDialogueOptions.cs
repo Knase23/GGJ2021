@@ -15,6 +15,9 @@ namespace Game.Gameplay.Player
 
         public SpeechSFX speech;
 
+
+        private LearnedGlyphPreview previewGlyph;
+        
         public InputActionReference CheatForLearningGlyphsActionReference;
         
         public float talkRange = 3;
@@ -32,6 +35,7 @@ namespace Game.Gameplay.Player
 
         private void Start()
         {
+            previewGlyph = FindObjectOfType<LearnedGlyphPreview>();
             CheatForLearningGlyphsActionReference.action.performed += context => LearnAllGlyphs();
             talkBubble.OnBubbleEnd += SpeeachCompleteCheck;
         }
@@ -54,6 +58,7 @@ namespace Game.Gameplay.Player
                 return;
             
             knownGlyphs.Add(hieroglyphic);
+            previewGlyph?.PreviewHieroglyph(hieroglyphic);
             onLearnNewGlyph?.Invoke(this);
         }
 

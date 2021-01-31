@@ -474,6 +474,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   speed: 3
   moveController: {fileID: 1314080533}
+  tutorial: {fileID: 0}
   allowLeftRightMovement: 0
   allowUpDownMovement: 1
 --- !u!114 &1314080533
@@ -978,7 +979,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 0.7
+  m_Pitch: 0.4
   Loop: 0
   Mute: 0
   Spatialize: 0

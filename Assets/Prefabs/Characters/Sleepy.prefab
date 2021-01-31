@@ -5299,6 +5299,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3923575500150003853}
   speed: 10
   moveController: {fileID: 8566296970683828279}
+  tutorial: {fileID: 0}
   allowLeftRightMovement: 1
   allowUpDownMovement: 0
 --- !u!58 &454433657789112490
@@ -5316,7 +5317,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.39
 --- !u!50 &1156521163122885348
 Rigidbody2D:
   serializedVersion: 4
@@ -5363,8 +5364,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 0.75
+  m_Volume: 0.5
+  m_Pitch: 0.6
   Loop: 0
   Mute: 0
   Spatialize: 0
