@@ -17,9 +17,8 @@ MonoBehaviour:
   onHearingActions: []
   onTalkerCompleteActions:
   - Go Down
-  expectedResponse:
-  - responseWord: {fileID: 11400000, guid: 757ea422221990d438cde35f97a0badc, type: 2}
-    nextBehaviour: {fileID: 11400000, guid: f4d4a0803f1206a40a39c8c733d849e8, type: 2}
+  onAiTalkComplete: []
+  expectedResponse: []
   unexpectedResponse:
     responseWord: {fileID: 0}
     nextBehaviour: {fileID: 11400000}

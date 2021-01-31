@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hangey_Help
   m_EditorClassIdentifier: 
   firstGlyph: {fileID: 11400000, guid: dd93cf89dd5ef654898d0f540a3d1389, type: 2}
-  secondGlyph: {fileID: 0}
+  secondGlyph: {fileID: 11400000, guid: 0e83b608093171d4dacccf88fe6fd01b, type: 2}
   onHearingActions: []
   onTalkerCompleteActions: []
   onAiTalkComplete: []

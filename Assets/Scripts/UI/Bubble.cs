@@ -29,6 +29,13 @@ namespace Game.UI
             transform.localScale = Vector3.zero;
             OnBubbleStartComplete += () => completedStart = true;
         }
+
+        public void StopShowing()
+        {
+            transform.localScale = Vector3.zero;
+            gameObject.LeanCancel();
+        }
+        
         public virtual void BubbleStartEffect()
         {
             if (gameObject.activeInHierarchy == false)
@@ -56,11 +63,11 @@ namespace Game.UI
                 startedEnd = true;
             else if (completedStart)
             {
-                Debug.Log("Bubble End Lean Cancel");
+                //Debug.Log("Bubble End Lean Cancel");
                 gameObject.LeanCancel();
                 transform.localScale = _defaultsScale;
             }
-            Debug.Log("Bubble End Lean",gameObject);
+            //Debug.Log("Bubble End Lean",gameObject);
             gameObject.LeanScale(Vector3.zero, animationOutDuration).setDelay(animationOutDelay).setEaseOutBack()
                 .setOnComplete(() =>
                 {

@@ -34,8 +34,6 @@ namespace Game
             _rigidbody2D = GetComponent<Rigidbody2D>();
             if(spriteRenderer)
                 _animator = GetComponent<Animator>();
-            if(moveController is PlayerInputController)
-                _animator.SetTrigger("GameHasStarted");
         }
 
         // Update is called once per frame
@@ -87,7 +85,6 @@ namespace Game
             {
                 if (_rigidbody2D.velocity.magnitude <= 0.5f)
                 {
-                   
                     _animator.SetBool("Walking", false);
                 }
                 else
@@ -99,6 +96,9 @@ namespace Game
                             tutorial.RemoveMe();
                         }
                     }
+                    if(moveController is PlayerInputController)
+                        _animator.SetTrigger("GameHasStarted");
+                    
                     _animator.SetBool("Walking", true);
                 }
                 

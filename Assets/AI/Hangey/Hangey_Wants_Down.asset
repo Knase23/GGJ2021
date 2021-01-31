@@ -19,7 +19,7 @@ MonoBehaviour:
   onAiTalkComplete: []
   expectedResponse:
   - responseWord: {fileID: 11400000, guid: dd93cf89dd5ef654898d0f540a3d1389, type: 2}
-    nextBehaviour: {fileID: 11400000}
+    nextBehaviour: {fileID: 11400000, guid: f5d85d2090c37ac4ea1007f62e69006b, type: 2}
   unexpectedResponse:
     responseWord: {fileID: 0}
     nextBehaviour: {fileID: 11400000}

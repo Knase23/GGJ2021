@@ -49,7 +49,7 @@ MonoBehaviour:
   speech: {fileID: 8461896343677327696}
   talkBubble: {fileID: 2472583089543852405}
   expressionBubble: {fileID: 1007910617085420443}
-  firstBehaviour: {fileID: 11400000, guid: 7c02d15c020049e4a87c0e394637b623, type: 2}
+  firstBehaviour: {fileID: 11400000, guid: 386524f9dcc37784d860d2f8268f27fe, type: 2}
   interestedSources:
   - {fileID: 0}
   AiActions:

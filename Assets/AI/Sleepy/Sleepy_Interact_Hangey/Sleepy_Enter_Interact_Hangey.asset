@@ -22,4 +22,4 @@ MonoBehaviour:
     nextBehaviour: {fileID: 11400000, guid: 0f5c0e1faad88704691c2b68c2a73025, type: 2}
   unexpectedResponse:
     responseWord: {fileID: 0}
-    nextBehaviour: {fileID: 0}
+    nextBehaviour: {fileID: 11400000}

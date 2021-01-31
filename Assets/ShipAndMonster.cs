@@ -14,7 +14,6 @@ public class ShipAndMonster : MonoBehaviour
     {
         holdingParent.SetActive(true);
         releasedParent.SetActive(false);
-        Invoke(nameof(ReleaseAndWinGame), 4f);
     }
 
     public void ReleaseAndWinGame()
