@@ -25,9 +25,9 @@ public class Fade : MonoBehaviour
         curtain.color = Color.black;
         SetToOpaque();
        
-        Invoke(nameof( RemoveIntroGraphic), 1.5f);
+        Invoke(nameof( RemoveIntroGraphic), 1.5f + 3f);
 
-        Invoke(nameof(FadeOut), 3.4f);
+        Invoke(nameof(FadeOut), 3.4f + 3f);
         // Invoke(nameof(DoWinScreen), 0.4f);
     }
 
