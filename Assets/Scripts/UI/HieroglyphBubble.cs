@@ -15,7 +15,7 @@ namespace Game.UI
             secondWordRenderer.sprite = null;
         }
 
-        public void SetExpectedSecond(bool state)
+        public virtual void SetExpectedSecond(bool state)
         {
             _expectedSecond = state;
 
@@ -25,12 +25,13 @@ namespace Game.UI
             }
         }
 
-        public void SetSecondWordAnimation(bool state)
+        private bool showedSecondWord;
+        public  void SetSecondWordAnimation(bool state)
         {
             bubbleAnimator.SetBool("SecondWord", state);
         }
         
-        public void ShowWords(HieroGlyph firstWord = null, HieroGlyph secondWord = null)
+        public virtual void ShowWords(HieroGlyph firstWord = null, HieroGlyph secondWord = null)
         {
             if (gameObject.activeInHierarchy == false)
             {
@@ -40,6 +41,7 @@ namespace Game.UI
             SetSecondWordAnimation(secondWord != null);
             firstRenderer.sprite = firstWord?.talkImage;
             secondWordRenderer.sprite = secondWord?.talkImage;
+            
             BubbleEnd();
         }
 
@@ -47,7 +49,7 @@ namespace Game.UI
         {
             if(_expectedSecond && completedStart)
                 gameObject.LeanCancel();
-            
+
             base.BubbleEnd();
         }
     }

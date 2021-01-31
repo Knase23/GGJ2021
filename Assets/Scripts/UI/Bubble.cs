@@ -23,7 +23,6 @@ namespace Game.UI
         protected virtual void Start()
         {
             firstRenderer.sprite = null;
-            
             gameObject.SetActive(false);
             _defaultsScale = transform.localScale;
             transform.localScale = Vector3.zero;
@@ -68,6 +67,11 @@ namespace Game.UI
                 transform.localScale = _defaultsScale;
             }
             //Debug.Log("Bubble End Lean",gameObject);
+            AnimationForBubbleGone();
+        }
+
+        public void AnimationForBubbleGone()
+        {
             gameObject.LeanScale(Vector3.zero, animationOutDuration).setDelay(animationOutDelay).setEaseOutBack()
                 .setOnComplete(() =>
                 {
