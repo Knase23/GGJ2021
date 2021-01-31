@@ -20,7 +20,7 @@ public class Title : MonoBehaviour
         titleText = GetComponent<TextMeshProUGUI>();
         titleText.text = string.Empty;
         aString.text = string.Empty;
-        Invoke(nameof(FirstLine),1.5f);
+        Invoke(nameof(FirstLine),8f);
     }
 
     private void FirstLine()
