@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 6329230385688262914}
   - component: {fileID: 5432281150149234121}
   - component: {fileID: 1638480801382246838}
+  - component: {fileID: 1377919715}
+  - component: {fileID: 1377919713}
+  - component: {fileID: 1377919714}
   m_Layer: 8
   m_Name: FollowMe
   m_TagString: Untagged
@@ -93,8 +96,38 @@ MonoBehaviour:
   talkRange: 3
   speech: {fileID: 0}
   talkBubble: {fileID: 5276164774200120316}
-  expressionBubble: {fileID: 6894335217859964932}
-  firstBehaviour: {fileID: 11400000, guid: 2aa9370ab3d15664f8784126c188faaf, type: 2}
+  ExpressionBubble: {fileID: 6894335217859964932}
+  FirstBehaviour: {fileID: 11400000, guid: 2aa9370ab3d15664f8784126c188faaf, type: 2}
+  actions:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1377919713}
+        m_TargetAssemblyTypeName: Game.Gameplay.AI.FollowTarget, GGJProject
+        m_MethodName: Follow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1377919713}
+        m_TargetAssemblyTypeName: Game.Gameplay.AI.FollowTarget, GGJProject
+        m_MethodName: StopFollow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  currentAiBehaviour: {fileID: 0}
   interestedSources:
   - {fileID: 0}
   onHearingActions: []
@@ -144,7 +177,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.1}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.43
 --- !u!114 &7973222864748366791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,43 +263,142 @@ MonoBehaviour:
         m_CallState: 2
   onReachedTarget:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6390197515793708390}
-        m_TargetAssemblyTypeName: Game.Gameplay.AI.AIDialogue, GGJProject
-        m_MethodName: SetCurrentBehaviour
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 670a90a26183f304fa804807ee5acf1a, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Game.Gameplay.AI.AiBehaviour, GGJProject
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6390197515793708390}
-        m_TargetAssemblyTypeName: Game.Gameplay.AI.AIDialogue, GGJProject
-        m_MethodName: AddInterestedSource
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6390197515793708390}
-        m_TargetAssemblyTypeName: Game.Gameplay.AI.AIDialogue, GGJProject
-        m_MethodName: Talk
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!82 &1377919715
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259986265654510169}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1377919713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259986265654510169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6884d763e7c289e4ca1d3e1dd3839147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStartFollow:
+    m_PersistentCalls:
+      m_Calls: []
+  onStopFollow:
+    m_PersistentCalls:
+      m_Calls: []
+  minimumDistanceAway: 1
+  maximumDistanceAway: 3
+  controller: {fileID: 7973222864748366791}
+--- !u!114 &1377919714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259986265654510169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02fce59a0a9753b4aa669fe3ca543b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 73e78831131aa2543b86e76197850ee0, type: 3}
+  - {fileID: 8300000, guid: 9e7198a4b2e8db342bcbf49df42b289c, type: 3}
+  - {fileID: 8300000, guid: 425693f79d2a5444eb94062fe9601d8b, type: 3}
+  - {fileID: 8300000, guid: ad2a4c1cb47c8c14da115b02313783f6, type: 3}
+  - {fileID: 8300000, guid: 54f7a5d8eb88c4b4c89496375c69140d, type: 3}
 --- !u!1 &259986266985625344
 GameObject:
   m_ObjectHideFlags: 0

@@ -166,6 +166,7 @@ namespace Game.Gameplay.AI
             {
                 GoThroughActionList(onTalkerComplete, action);
             }
+                if(speech != null) speech.Speak(1,1);
         }
 
         public void Talk()
@@ -185,6 +186,7 @@ namespace Game.Gameplay.AI
             
             if(currentAiBehaviour.secondGlyph is HieroGlyph)
                 WaitingForSecondWord(true);
+            if(speech != null) speech.Speak(3,6);
             
             Talk(currentAiBehaviour.secondGlyph);
         }
