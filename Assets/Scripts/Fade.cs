@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Game;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +8,8 @@ public class Fade : MonoBehaviour
 {
     public Image curtain;
     public Image winScreen;
-    private const float FadeInTime = 1.5f;
-    private const float FadeOutTime = 2.5f;
+    public const float FadeInTime = 1.5f;
+    public const float FadeOutTime = 2.5f;
     public AudioClip winMusic;
     public AudioSource source;
 
@@ -63,16 +64,27 @@ public class Fade : MonoBehaviour
         FadeOut();
     }
 
-    public void DoWinScreen()
+    public void DoWinMusic()
     {
         Ambience ambience = FindObjectOfType<Ambience>();
         if (ambience != null)
         {
             ambience.FadeOut();
         }
-
         source.PlayOneShot(winMusic);
-        SetToTransparent();
-        winScreen.CrossFadeAlpha(1, 4, true);
+    }
+
+    public void DoWinScreen()
+    {
+       
+
+        foreach (var movementScript in FindObjectsOfType<Movement>())
+        {
+            movementScript.enabled = false;
+        }
+
+        
+       // SetToTransparent();
+        winScreen.CrossFadeAlpha(1, 6, true);
     }
 }
