@@ -24,7 +24,7 @@ namespace Game
         // Update is called once per frame
         void Update()
         {
-            this.transform.localPosition += Vector3.up * (Mathf.Sin(Time.realtimeSinceStartup) * 0.1f);
+            this.transform.localPosition += Vector3.up * (Mathf.Sin(Time.realtimeSinceStartup) * 0.0003f);
         }
     }
 }

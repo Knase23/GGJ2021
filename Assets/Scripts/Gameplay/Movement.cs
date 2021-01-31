@@ -87,6 +87,11 @@ namespace Game
             {
                 if (_rigidbody2D.velocity.magnitude <= 0.5f)
                 {
+                   
+                    _animator.SetBool("Walking", false);
+                }
+                else
+                {
                     if (tutorial != null)
                     {
                         if (tutorial.isVisible)
@@ -94,10 +99,10 @@ namespace Game
                             tutorial.RemoveMe();
                         }
                     }
-                    _animator.SetBool("Walking", false);
-                }
-                else
                     _animator.SetBool("Walking", true);
+                }
+                
+                   
             }
         }
 

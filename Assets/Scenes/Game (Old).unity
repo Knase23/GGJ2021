@@ -10983,17 +10983,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1107397968675543853, guid: 8fc05cf93bdea2742b294093e1328827, type: 3}
   m_PrefabInstance: {fileID: 8376826621092068749}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1743551705 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8837963273483872251, guid: 68cc83ee73833eb47b2c058eb78f54d7, type: 3}
-  m_PrefabInstance: {fileID: 1883273023}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aaf4211cb8e8bd4c9e2fb641ef30975, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1869302131
 GameObject:
   m_ObjectHideFlags: 0
@@ -11498,10 +11487,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
-    - target: {fileID: 7940960953112369106, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
-      propertyPath: onLearnNewGlyph.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1743551705}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
 --- !u!1001 &5895550904122386831
