@@ -286,7 +286,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -324,8 +324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb24fc649a19cd49a8a8aed12dc3ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleText: {fileID: 0}
+  titleText: {fileID: 9057244796562607121}
   aString: {fileID: 11400000, guid: c9635c5759b846a4aabcb371ae3b278f, type: 2}
+  prevString: 
 --- !u!1 &5881602230907031733
 GameObject:
   m_ObjectHideFlags: 0
