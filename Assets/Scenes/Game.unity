@@ -6173,7 +6173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6750574175655350477, guid: e92df6a5616c88c4383798ed80eec0ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.97
+      value: -46.51
       objectReference: {fileID: 0}
     - target: {fileID: 6750574175655350477, guid: e92df6a5616c88c4383798ed80eec0ab, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6225,37 +6225,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 561382506}
     - target: {fileID: 1803139140160235161, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
-      propertyPath: onSpeechComplete.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803139140160235161, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
-      propertyPath: onTalkerComplete.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803139140160235161, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
-      propertyPath: onSpeechComplete.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: AiActions.Array.data[2].actions.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1192837768}
-    - target: {fileID: 1803139140160235161, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
-      propertyPath: onTalkerComplete.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1192837768}
-    - target: {fileID: 1803139140160235161, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
-      propertyPath: onSpeechComplete.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetAwake
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803139140160235161, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
-      propertyPath: onTalkerComplete.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetAwake
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803139140160235161, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
-      propertyPath: onSpeechComplete.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Sleepy, GGJProject
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803139140160235161, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
-      propertyPath: onTalkerComplete.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Sleepy, GGJProject
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 561382506}
     - target: {fileID: 3923575501468467146, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
       propertyPath: m_Name
       value: Sleepy
@@ -6304,6 +6276,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4711578575622379664, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
+      propertyPath: minimumDistanceAway
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
 --- !u!4 &1189343816 stripped
@@ -6311,24 +6287,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3923575501468467148, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
   m_PrefabInstance: {fileID: 1189343815}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1192837767 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3923575501468467146, guid: 39ff0b10cb3910341a8a2aceb4453178, type: 3}
-  m_PrefabInstance: {fileID: 1189343815}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1192837768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192837767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c68e8d8a5398341b4e7f639d8580c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
 --- !u!1 &1250119308
 GameObject:
   m_ObjectHideFlags: 0
@@ -11144,6 +11102,14 @@ PrefabInstance:
       propertyPath: interestedSources.Array.data[0]
       value: 
       objectReference: {fileID: 561382506}
+    - target: {fileID: 578383331, guid: 505ae484bf50936468c816b1a2b942cd, type: 3}
+      propertyPath: AiActions.Array.data[0].actions.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 127030896}
+    - target: {fileID: 578383331, guid: 505ae484bf50936468c816b1a2b942cd, type: 3}
+      propertyPath: AiActions.Array.data[1].actions.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 861721598}
     - target: {fileID: 1314080531, guid: 505ae484bf50936468c816b1a2b942cd, type: 3}
       propertyPath: objectThatFollow
       value: 
@@ -12131,7 +12097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3182913682711537583, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.97
+      value: -46.51
       objectReference: {fileID: 0}
     - target: {fileID: 3182913682711537583, guid: eb06b6cea9875a741be27dd4a0188642, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12316,7 +12282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376826621233064717, guid: 8fc05cf93bdea2742b294093e1328827, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.97
+      value: -46.51
       objectReference: {fileID: 0}
     - target: {fileID: 8376826621233064717, guid: 8fc05cf93bdea2742b294093e1328827, type: 3}
       propertyPath: m_LocalPosition.y

@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
-  m_Name: Sleepy_Start
+  m_Name: Hangey_Wants_Down
   m_EditorClassIdentifier: 
-  firstGlyph: {fileID: 11400000, guid: 0e83b608093171d4dacccf88fe6fd01b, type: 2}
-  secondGlyph: {fileID: 0}
+  firstGlyph: {fileID: 11400000, guid: dd93cf89dd5ef654898d0f540a3d1389, type: 2}
+  secondGlyph: {fileID: 11400000, guid: 08021baaaced4314fa6bf78d34feb026, type: 2}
   onHearingActions: []
-  onTalkerCompleteActions:
-  - Wake Up
+  onTalkerCompleteActions: []
   onAiTalkComplete: []
   expectedResponse:
-  - responseWord: {fileID: 11400000, guid: 74a2773588d0db64b979320fb46d1cda, type: 2}
-    nextBehaviour: {fileID: 11400000, guid: 0dd891e058700a446a9a70bb8aa6e17e, type: 2}
+  - responseWord: {fileID: 11400000, guid: dd93cf89dd5ef654898d0f540a3d1389, type: 2}
+    nextBehaviour: {fileID: 11400000}
   unexpectedResponse:
     responseWord: {fileID: 0}
     nextBehaviour: {fileID: 11400000}

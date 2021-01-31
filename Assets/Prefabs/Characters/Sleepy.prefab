@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 2462517978876321112}
   - component: {fileID: 454433657789112490}
   - component: {fileID: 1156521163122885348}
+  - component: {fileID: 176572323883035668}
   m_Layer: 8
   m_Name: Sleepy
   m_TagString: Monster
@@ -321,7 +322,7 @@ MonoBehaviour:
   minimumDistanceAway: 1
   maximumDistanceAway: 3
   controller: {fileID: 8566296970683828279}
-  _Animator: {fileID: 0}
+  _Animator: {fileID: 3923575501468467149}
 --- !u!114 &1803139140160235161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,9 +344,55 @@ MonoBehaviour:
   firstBehaviour: {fileID: 11400000, guid: 91e34f26e799b08459f0dd05ef2286e5, type: 2}
   interestedSources:
   - {fileID: 0}
-  onHearingActions: []
-  onTalkerComplete: []
-  onAiTalkComplete: []
+  AiActions:
+  - name: Wake Up
+    actions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 176572323883035668}
+          m_TargetAssemblyTypeName: Sleepy, GGJProject
+          m_MethodName: SetAwake
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - name: Sleep
+    actions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 176572323883035668}
+          m_TargetAssemblyTypeName: Sleepy, GGJProject
+          m_MethodName: SetAwake
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: Follow Player
+    actions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4711578575622379664}
+          m_TargetAssemblyTypeName: Game.Gameplay.AI.FollowTarget, GGJProject
+          m_MethodName: Follow
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   currentAiBehaviour: {fileID: 0}
 --- !u!114 &2462517978876321112
 MonoBehaviour:
@@ -401,6 +448,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &176572323883035668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3923575501468467146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c68e8d8a5398341b4e7f639d8580c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3923575501468467149}
 --- !u!1001 &990710988611515470
 PrefabInstance:
   m_ObjectHideFlags: 0
