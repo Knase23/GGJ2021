@@ -81,7 +81,7 @@ namespace Game
             //     new Vector2(Mathf.Clamp(_rigidbody2D.velocity.x, -speed, speed), _rigidbody2D.velocity.y);
             // transform.position += (Vector3)GroundOffset(Vector3.left) * (speed * Time.deltaTime);
 
-            if (_animator)
+            if (_animator && _animator.runtimeAnimatorController != null)
             {
                 if (_rigidbody2D.velocity.magnitude <= 0.5f)
                 {

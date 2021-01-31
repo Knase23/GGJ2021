@@ -17,9 +17,9 @@ namespace Game.Gameplay.Player
 
 
         private LearnedGlyphPreview previewGlyph;
-        
+
         public InputActionReference CheatForLearningGlyphsActionReference;
-        
+
         public float talkRange = 3;
         public HieroGlyph latestTalk;
 
@@ -27,9 +27,11 @@ namespace Game.Gameplay.Player
 
         public HieroglyphBubble talkBubble;
 
+
+        public List<GameObject> interestedSources = new List<GameObject>();
         private event Action OnSpeechComplete;
-        
-        
+
+
         private bool secondWord;
         private HieroGlyph previousWord;
 
@@ -56,7 +58,7 @@ namespace Game.Gameplay.Player
         {
             if (knownGlyphs.Contains(hieroglyphic))
                 return;
-            
+
             knownGlyphs.Add(hieroglyphic);
             previewGlyph?.PreviewHieroglyph(hieroglyphic);
             onLearnNewGlyph?.Invoke(this);
@@ -71,22 +73,21 @@ namespace Game.Gameplay.Player
         {
             if (glyph is HieroGlyph hieroglyph)
             {
-                
                 latestTalk = hieroglyph;
                 if (previousWord)
                 {
-                    talkBubble.ShowWords(previousWord,latestTalk);
+                    talkBubble.ShowWords(previousWord, latestTalk);
                     ResetSecondWord();
                 }
                 else
                 {
+                    WaitingForSecondWord(false);
                     talkBubble.ShowWords(latestTalk);
-                    Debug.Log("Single Word");
                 }
-                DialogueSystem.Talking(this);
-                if(speech != null) speech.Speak();
-            }
 
+                DialogueSystem.Talking(this);
+                if (speech != null) speech.Speak();
+            }
         }
 
         public string GetName()
@@ -97,11 +98,11 @@ namespace Game.Gameplay.Player
         public void WaitingForSecondWord(bool state)
         {
             secondWord = state;
-            previousWord = state?latestTalk:null;
+            previousWord = state ? latestTalk : null;
             talkBubble.SetExpectedSecond(secondWord);
         }
 
-        
+
         public void SubscribeToOnSpeechComplete(Action action)
         {
             OnSpeechComplete += action;
@@ -117,11 +118,24 @@ namespace Game.Gameplay.Player
             talkBubble.BubbleEnd();
             talkBubble.SetSecondWordAnimation(true);
             talkBubble.OnBubbleStartComplete -= SetupSecondWord;
-
         }
+
         public void OnHearing(ITalker talker)
         {
             Glyph glyph = talker.GetLatestGlyph();
+
+            //Check if the Talker is someone i want to listen to!
+            bool isInterested = false;
+            foreach (GameObject interestedSource in interestedSources)
+            {
+                if (talker.GetSource() == interestedSource)
+                {
+                    isInterested = true;
+                    break;
+                }
+            }
+
+            if (isInterested == false) return;
 
             if (glyph is LogicGlyph logicGlyph)
             {
@@ -134,11 +148,25 @@ namespace Game.Gameplay.Player
                 //Reset the logic that needs to be reset!
                 WaitingForSecondWord(false);
             }
-            
+
             if (glyph is HieroGlyph hieroglyph)
             {
                 LearnNewGlyph(hieroglyph);
             }
+        }
+
+       
+
+        public void AddInterestedSource(GameObject source)
+        {
+            if (interestedSources.Contains(source)) return;
+            interestedSources.Add(source);
+        }
+
+        public void RemoveInterestedSource(GameObject source)
+        {
+            if (interestedSources.Contains(source))
+                interestedSources.Remove(source);
         }
 
         public void SpeeachCompleteCheck()
@@ -148,7 +176,6 @@ namespace Game.Gameplay.Player
                 OnSpeechComplete?.Invoke();
                 OnSpeechComplete = null;
             }
-            
         }
 
         private void ResetSecondWord()
@@ -186,6 +213,5 @@ namespace Game.Gameplay.Player
                 LearnNewGlyph(hieroGlyph);
             }
         }
-        
     }
 }

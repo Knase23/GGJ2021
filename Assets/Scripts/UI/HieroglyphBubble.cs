@@ -7,7 +7,7 @@ namespace Game.UI
     public class HieroglyphBubble : Bubble
     {
         public SpriteRenderer secondWordRenderer;
-        private bool _expectedSecond;
+        protected bool _expectedSecond;
 
         protected override void Start()
         {
@@ -26,28 +26,26 @@ namespace Game.UI
         }
 
         private bool showedSecondWord;
-        public  void SetSecondWordAnimation(bool state)
+
+        public void SetSecondWordAnimation(bool state)
         {
             bubbleAnimator.SetBool("SecondWord", state);
         }
-        
+
         public virtual void ShowWords(HieroGlyph firstWord = null, HieroGlyph secondWord = null)
         {
-            if (gameObject.activeInHierarchy == false)
-            {
-                BubbleStartEffect();
-            }
-
+            BubbleStartEffect();
+            
             SetSecondWordAnimation(secondWord != null);
             firstRenderer.sprite = firstWord?.talkImage;
             secondWordRenderer.sprite = secondWord?.talkImage;
-            
+
             BubbleEnd();
         }
 
         public override void BubbleEnd()
         {
-            if(_expectedSecond && completedStart)
+            if (_expectedSecond && completedStart)
                 gameObject.LeanCancel();
 
             base.BubbleEnd();

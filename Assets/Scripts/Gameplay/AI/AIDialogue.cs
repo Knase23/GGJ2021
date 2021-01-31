@@ -202,6 +202,7 @@ namespace Game.Gameplay.AI
                 }
                 else
                 {
+                    WaitingForSecondWord(false);
                     talkBubble.ShowWords(hieroglyph);
                 }
 

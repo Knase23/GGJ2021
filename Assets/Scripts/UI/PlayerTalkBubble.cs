@@ -8,7 +8,7 @@ namespace Game
     public class PlayerTalkBubble : HieroglyphBubble
     {
         private bool waitForSecondWord;
-        
+
         public override void SetExpectedSecond(bool state)
         {
             if (state)
@@ -20,15 +20,14 @@ namespace Game
 
         public override void ShowWords(HieroGlyph firstWord = null, HieroGlyph secondWord = null)
         {
-            if (gameObject.activeInHierarchy == false)
-            {
-                BubbleStartEffect();
-            }
+            BubbleStartEffect();
+
             SetSecondWordAnimation(secondWord != null);
+
+
             firstRenderer.sprite = firstWord?.talkImage;
             secondWordRenderer.sprite = secondWord?.talkImage;
             BubbleEnd();
-
         }
 
         public override void BubbleEnd()
@@ -42,8 +41,6 @@ namespace Game
             {
                 AnimationForBubbleGone();
             }
-            
-            
         }
     }
 }

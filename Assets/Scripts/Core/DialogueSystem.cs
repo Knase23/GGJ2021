@@ -42,6 +42,8 @@ namespace Game
     public interface IHearing : ILocation,IName,IGetSource
     {
         void OnHearing(ITalker talker);
+        void AddInterestedSource(GameObject source);
+        void RemoveInterestedSource(GameObject source);
     }
 
     public interface IGetSource

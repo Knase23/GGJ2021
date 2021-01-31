@@ -86,7 +86,7 @@ namespace Game.Gameplay.AI
 
         public void StopFollow()
         {
-            if(_Animator)
+            if(_Animator && _Animator.runtimeAnimatorController != null)
                 _Animator.SetBool("Follow",false);
             
             _shouldFollow = false;
