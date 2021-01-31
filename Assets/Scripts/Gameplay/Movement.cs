@@ -16,6 +16,8 @@ namespace Game
         public float speed = 10;
         public MonoBehaviour moveController;
 
+        public MovementTutorial tutorial;
+        
         public bool allowLeftRightMovement = true;
         public bool allowUpDownMovement = false;
         
@@ -84,7 +86,16 @@ namespace Game
             if (_animator)
             {
                 if (_rigidbody2D.velocity.magnitude <= 0.5f)
+                {
+                    if (tutorial != null)
+                    {
+                        if (tutorial.isVisible)
+                        {
+                            tutorial.RemoveMe();
+                        }
+                    }
                     _animator.SetBool("Walking", false);
+                }
                 else
                     _animator.SetBool("Walking", true);
             }
