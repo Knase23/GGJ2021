@@ -57,6 +57,7 @@ public class HelpingHangey : MonoBehaviour
         _fade.FadeOut(fadeOutTime);
         
         yield return new WaitForSecondsRealtime(fadeOutTime);
+        _coroutine = null;
         yield break;
         
     }
@@ -79,14 +80,12 @@ public class HelpingHangey : MonoBehaviour
         onHelpSleepyComplete?.Invoke();
         yield return new WaitForSecondsRealtime(blackDuration);
         _fade.FadeOut(fadeOutTime);
+        _coroutine = null;
         gameObject.SetActive(false);
         yield break;
         
     }
-    
-    
-    
-    
+
     public void HelpWithSleepy()
     {
         if (_coroutine == null)

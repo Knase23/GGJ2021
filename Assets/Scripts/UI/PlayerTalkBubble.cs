@@ -13,7 +13,6 @@ namespace Game
         {
             if (state)
             {
-                Debug.Log("Should wait 1");
                 waitForSecondWord = true;
             }
             base.SetExpectedSecond(state);
@@ -29,19 +28,15 @@ namespace Game
             firstRenderer.sprite = firstWord?.talkImage;
             secondWordRenderer.sprite = secondWord?.talkImage;
             BubbleEnd();
-            if (waitForSecondWord && secondWord == null)
-            {
-                waitForSecondWord = false;
-            }
-            
+
         }
 
         public override void BubbleEnd()
         {
             if (waitForSecondWord)
             {
-                Debug.Log("Should wait 2");
                 gameObject.LeanCancel();
+                waitForSecondWord = false;
             }
             else
             {
