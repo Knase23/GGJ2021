@@ -156,7 +156,7 @@ namespace Game.Gameplay.AI
         {
             if (_latestPrevGlyph == null)
             {
-                Debug.Log($"{GetName()}: After Talker Complete Talk", gameObject);
+                //Debug.Log($"{GetName()}: After Talker Complete Talk", gameObject);
                 Talk();
             }
 

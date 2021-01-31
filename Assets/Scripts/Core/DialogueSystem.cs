@@ -23,7 +23,7 @@ namespace Game
 
         public static void Talking(ITalker talker)
         {
-            Debug.Log($"{talker.GetName()} is saying:{talker.GetLatestGlyph()}", talker.GetSource());
+            //Debug.Log($"{talker.GetName()} is saying:{talker.GetLatestGlyph()}", talker.GetSource());
             foreach (IHearing listener in Listeners)
             {
                 if(talker == listener) continue;
@@ -32,7 +32,7 @@ namespace Game
                 
                 if (distance < talker.GetTalkRange())
                 {
-                    Debug.Log($"{listener.GetName()} is Hearing:{talker.GetLatestGlyph()}", listener.GetSource());
+                    //Debug.Log($"{listener.GetName()} is Hearing:{talker.GetLatestGlyph()}", listener.GetSource());
                     listener.OnHearing(talker);
                 }
             }
