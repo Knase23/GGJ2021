@@ -8,6 +8,7 @@ public class Fade : MonoBehaviour
 {
     public Image curtain;
     public Image winScreen;
+    public Image introGraphic;
     public const float FadeInTime = 1.5f;
     public const float FadeOutTime = 2.5f;
     public AudioClip winMusic;
@@ -15,14 +16,24 @@ public class Fade : MonoBehaviour
 
     private Coroutine fadeRoutine;
 
-    public void Start()
+    public void Awake()
     {
+        introGraphic.color = Color.white;
+        introGraphic.canvasRenderer.SetAlpha(1);
         winScreen.color = Color.white;
         winScreen.canvasRenderer.SetAlpha(0);
         curtain.color = Color.black;
         SetToOpaque();
-        Invoke(nameof(FadeOut), 0.4f);
+       
+        Invoke(nameof( RemoveIntroGraphic), 1.5f);
+
+        Invoke(nameof(FadeOut), 3.4f);
         // Invoke(nameof(DoWinScreen), 0.4f);
+    }
+
+    private void RemoveIntroGraphic()
+    {
+        introGraphic.CrossFadeAlpha(0,3.3f,true);
     }
 
     public void DoFadeInThenOut()
@@ -59,11 +70,12 @@ public class Fade : MonoBehaviour
     {
         curtain.CrossFadeAlpha(1, duration, true);
     }
+
     public void FadeOut(float duration)
     {
         curtain.CrossFadeAlpha(0, duration, true);
     }
-    
+
     private IEnumerator Fading()
     {
         SetToTransparent();
@@ -80,20 +92,19 @@ public class Fade : MonoBehaviour
         {
             ambience.FadeOut();
         }
+
         source.PlayOneShot(winMusic);
     }
 
     public void DoWinScreen()
     {
-       
-
         foreach (var movementScript in FindObjectsOfType<Movement>())
         {
             movementScript.enabled = false;
         }
 
-        
-       // SetToTransparent();
+
+        // SetToTransparent();
         winScreen.CrossFadeAlpha(1, 6, true);
     }
 }
