@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
-  m_Name: Hangey_Enter_State
+  m_Name: Hangey_Got_Help_Sleepy
   m_EditorClassIdentifier: 
-  firstGlyph: {fileID: 11400000, guid: 0e83b608093171d4dacccf88fe6fd01b, type: 2}
+  firstGlyph: {fileID: 11400000, guid: 118f806d370e203428286077b3cca9eb, type: 2}
   secondGlyph: {fileID: 0}
-  onHearingActions: []
+  onHearingActions:
+  - Fade
   onTalkerCompleteActions: []
   onAiTalkComplete: []
-  expectedResponse:
-  - responseWord: {fileID: 11400000, guid: 74a2773588d0db64b979320fb46d1cda, type: 2}
-    nextBehaviour: {fileID: 11400000, guid: 588861b2cd216be4ab2bd6157c9304cc, type: 2}
+  expectedResponse: []
   unexpectedResponse:
     responseWord: {fileID: 0}
-    nextBehaviour: {fileID: 11400000}
+    nextBehaviour: {fileID: 11400000, guid: e87fabe8daf8ad34695f705c60532f4e, type: 2}
