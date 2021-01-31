@@ -14,7 +14,7 @@ public class ShipAndMonster : MonoBehaviour
     {
         holdingParent.SetActive(true);
         releasedParent.SetActive(false);
-       // Invoke(nameof(ReleaseAndWinGame), 4f);
+        Invoke(nameof(ReleaseAndWinGame), 4f);
     }
 
     public void ReleaseAndWinGame()
@@ -27,6 +27,7 @@ public class ShipAndMonster : MonoBehaviour
         Fade fade = FindObjectOfType<Fade>();
         fade.FadeIn();
         fade.DoWinMusic();
+        FindObjectOfType<ShowLearnedWords>().gameObject.SetActive(false);
         titleText.text = "\"The kind creature released my rocket\"";
         yield return new WaitForSeconds(Fade.FadeInTime + 0.25f);
         holdingParent.SetActive(false);
@@ -53,9 +54,11 @@ public class ShipAndMonster : MonoBehaviour
         
         yield return new WaitForSeconds(5.5f);
         titleText.text = "SFX: transformed from the public Celeste FMOD project";
-        
+
         yield return new WaitForSeconds(6.5f);
         titleText.text = "Thank you for playing!";
+        
+        FindObjectOfType<CloseGame>().ShowMe();
         yield break;
     }
 }
