@@ -52,9 +52,39 @@ MonoBehaviour:
   firstBehaviour: {fileID: 11400000, guid: 7c02d15c020049e4a87c0e394637b623, type: 2}
   interestedSources:
   - {fileID: 0}
-  onHearingActions: []
-  onTalkerComplete: []
-  onAiTalkComplete: []
+  AiActions:
+  - name: Go Down
+    actions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1314080531}
+          m_TargetAssemblyTypeName: Game.Gameplay.AI.BeFollowedAI, GGJProject
+          m_MethodName: SetTarget
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: Go Up
+    actions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1314080531}
+          m_TargetAssemblyTypeName: Game.Gameplay.AI.BeFollowedAI, GGJProject
+          m_MethodName: SetTarget
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   currentAiBehaviour: {fileID: 0}
 --- !u!1 &706833227
 GameObject:
