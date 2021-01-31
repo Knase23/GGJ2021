@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
-  m_Name: Sleepy_Follow
+  m_Name: Sleepy_Enter_Interact_Hangey
   m_EditorClassIdentifier: 
-  firstGlyph: {fileID: 11400000, guid: b1ff2bad1aa36a749bab8d32f240f0ff, type: 2}
-  secondGlyph: {fileID: 0}
-  onHearingActions:
-  - Follow Player
+  firstGlyph: {fileID: 11400000, guid: dd93cf89dd5ef654898d0f540a3d1389, type: 2}
+  secondGlyph: {fileID: 11400000, guid: a8cdbc14717e19347aa857b0f4849fbb, type: 2}
+  onHearingActions: []
   onTalkerCompleteActions: []
   onAiTalkComplete: []
   expectedResponse:
-  - responseWord: {fileID: 0}
-    nextBehaviour: {fileID: 0}
+  - responseWord: {fileID: 11400000, guid: dd93cf89dd5ef654898d0f540a3d1389, type: 2}
+    nextBehaviour: {fileID: 11400000, guid: 0f5c0e1faad88704691c2b68c2a73025, type: 2}
   unexpectedResponse:
     responseWord: {fileID: 0}
-    nextBehaviour: {fileID: 11400000}
+    nextBehaviour: {fileID: 0}

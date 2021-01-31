@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe186b0c2264c389c74c29e08b4dfc4, type: 3}
   m_Name: Giant_Hello_Response
   m_EditorClassIdentifier: 
-  firstGlyph: {fileID: 11400000, guid: a8cdbc14717e19347aa857b0f4849fbb, type: 2}
+  firstGlyph: {fileID: 11400000, guid: 118f806d370e203428286077b3cca9eb, type: 2}
   secondGlyph: {fileID: 0}
+  onHearingActions: []
+  onTalkerCompleteActions: []
+  onAiTalkComplete: []
   expectedResponse: []
   unexpectedResponse:
     responseWord: {fileID: 0}
     nextBehaviour: {fileID: 11400000, guid: 2bbf9b63c4d2a0a48a4b69e49fd87b5c, type: 2}
-    onResponse: -1
