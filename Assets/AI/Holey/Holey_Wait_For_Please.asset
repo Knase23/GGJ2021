@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstGlyph: {fileID: 11400000, guid: b1ff2bad1aa36a749bab8d32f240f0ff, type: 2}
   secondGlyph: {fileID: 0}
-  onHearingActions:
-  - HiddenTalk
+  onHearingActions: []
   onTalkerCompleteActions: []
   onAiTalkComplete: []
   expectedResponse:

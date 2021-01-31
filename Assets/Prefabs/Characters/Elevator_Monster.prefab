@@ -43,127 +43,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71491eb900ff42aca79ea1dc7e82ca24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _latestGlyph: {fileID: 0}
+  _latestPrevGlyph: {fileID: 0}
   talkRange: 10
   speech: {fileID: 8461896343677327696}
   talkBubble: {fileID: 2472583089543852405}
-  ExpressionBubble: {fileID: 1007910617085420443}
-  FirstBehaviour: {fileID: 11400000, guid: 7c02d15c020049e4a87c0e394637b623, type: 2}
+  expressionBubble: {fileID: 1007910617085420443}
+  firstBehaviour: {fileID: 11400000, guid: 7c02d15c020049e4a87c0e394637b623, type: 2}
   interestedSources:
   - {fileID: 0}
-  onHearingActions:
-  - name: Go Up
-    actions:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1314080531}
-          m_TargetAssemblyTypeName: Game.Gameplay.AI.BeFollowedAI, GGJProject
-          m_MethodName: SetTarget
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1314080531}
-          m_TargetAssemblyTypeName: Game.Gameplay.AI.BeFollowedAI, GGJProject
-          m_MethodName: StartWalking
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Go Down
-    actions:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1314080531}
-          m_TargetAssemblyTypeName: Game.Gameplay.AI.BeFollowedAI, GGJProject
-          m_MethodName: SetTarget
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1314080531}
-          m_TargetAssemblyTypeName: Game.Gameplay.AI.BeFollowedAI, GGJProject
-          m_MethodName: StartWalking
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  onSpeechComplete:
-  - name: Go Up
-    actions:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1314080531}
-          m_TargetAssemblyTypeName: Game.Gameplay.AI.BeFollowedAI, GGJProject
-          m_MethodName: SetTarget
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1314080531}
-          m_TargetAssemblyTypeName: Game.Gameplay.AI.BeFollowedAI, GGJProject
-          m_MethodName: StartWalking
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Go Down
-    actions:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1314080531}
-          m_TargetAssemblyTypeName: Game.Gameplay.AI.BeFollowedAI, GGJProject
-          m_MethodName: SetTarget
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1314080531}
-          m_TargetAssemblyTypeName: Game.Gameplay.AI.BeFollowedAI, GGJProject
-          m_MethodName: StartWalking
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  onHearingActions: []
+  onTalkerComplete: []
+  onAiTalkComplete: []
   currentAiBehaviour: {fileID: 0}
 --- !u!1 &706833227
 GameObject:
@@ -240,7 +131,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.042844534, y: 0.40702486}
+  m_Offset: {x: -0.02512145, y: 1.2415376}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -251,7 +142,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.6840663, y: 7.9533424}
+  m_Size: {x: 4.6777797, y: 5.5212593}
   m_EdgeRadius: 0
 --- !u!114 &1850486562
 MonoBehaviour:
@@ -468,7 +359,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 578383331}
         m_TargetAssemblyTypeName: Game.Gameplay.AI.AIDialogue, GGJProject
-        m_MethodName: CheckCurrentGlyphs
+        m_MethodName: Talk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

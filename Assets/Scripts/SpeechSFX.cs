@@ -17,9 +17,10 @@ public class SpeechSFX : MonoBehaviour
 
     public void Speak(int min = 3, int max = 6)
     {
-        StartCoroutine(Speaking(min, max));
         if(voiceClips.Count == 0)
             return;
+        
+        StartCoroutine(Speaking(min, max));
     }
 
     private IEnumerator Speaking(int min, int max)

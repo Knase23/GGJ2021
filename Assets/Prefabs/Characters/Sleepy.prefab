@@ -334,31 +334,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71491eb900ff42aca79ea1dc7e82ca24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _latestGlyph: {fileID: 0}
+  _latestPrevGlyph: {fileID: 0}
   talkRange: 10
-  speech: {fileID: 0}
+  speech: {fileID: 3000867038710990164}
   talkBubble: {fileID: 3773202297439952651}
-  ExpressionBubble: {fileID: 604996998243067310}
-  FirstBehaviour: {fileID: 11400000, guid: 91e34f26e799b08459f0dd05ef2286e5, type: 2}
+  expressionBubble: {fileID: 604996998243067310}
+  firstBehaviour: {fileID: 11400000, guid: 91e34f26e799b08459f0dd05ef2286e5, type: 2}
   interestedSources:
   - {fileID: 0}
   onHearingActions: []
-  onSpeechComplete:
-  - name: Wake Up
-    actions:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3923575501468467149}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: StopSleep
-            m_BoolArgument: 0
-          m_CallState: 2
+  onTalkerComplete: []
+  onAiTalkComplete: []
   currentAiBehaviour: {fileID: 0}
 --- !u!114 &2462517978876321112
 MonoBehaviour:

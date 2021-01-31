@@ -94,44 +94,15 @@ MonoBehaviour:
   _latestGlyph: {fileID: 0}
   _latestPrevGlyph: {fileID: 0}
   talkRange: 3
-  speech: {fileID: 0}
+  speech: {fileID: 4754533783776654694}
   talkBubble: {fileID: 5276164774200120316}
-  ExpressionBubble: {fileID: 6894335217859964932}
-  FirstBehaviour: {fileID: 11400000, guid: 2aa9370ab3d15664f8784126c188faaf, type: 2}
-  actions:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1377919713}
-        m_TargetAssemblyTypeName: Game.Gameplay.AI.FollowTarget, GGJProject
-        m_MethodName: Follow
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1377919713}
-        m_TargetAssemblyTypeName: Game.Gameplay.AI.FollowTarget, GGJProject
-        m_MethodName: StopFollow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  currentAiBehaviour: {fileID: 0}
+  expressionBubble: {fileID: 6894335217859964932}
+  firstBehaviour: {fileID: 11400000, guid: 2aa9370ab3d15664f8784126c188faaf, type: 2}
   interestedSources:
   - {fileID: 0}
   onHearingActions: []
-  onTalkerComplete:
+  onTalkerComplete: []
+  onAiTalkComplete:
   - name: Run To Holey
     actions:
       m_PersistentCalls:
@@ -160,7 +131,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  onAiTalkComplete: []
+        - m_Target: {fileID: 5762728912506759165}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   currentAiBehaviour: {fileID: 0}
 --- !u!58 &428300769392427879
 CircleCollider2D:
@@ -248,22 +230,58 @@ MonoBehaviour:
   minimumCatchUpDistance: 2
   onObjectCatchUp:
     m_PersistentCalls:
+      m_Calls: []
+  onReachedTarget:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6390197515793708390}
         m_TargetAssemblyTypeName: Game.Gameplay.AI.AIDialogue, GGJProject
-        m_MethodName: Talk
-        m_Mode: 1
+        m_MethodName: SetCurrentBehaviour
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 670a90a26183f304fa804807ee5acf1a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Game.Gameplay.AI.AiBehaviour, GGJProject
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.Gameplay.AI.AIDialogue, GGJProject
+        m_MethodName: AddInterestedSource
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 259986265654510169}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: AddInterestedSource
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5762728912506759165}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
-  onReachedTarget:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!82 &1377919715
 AudioSource:
   m_ObjectHideFlags: 0
@@ -381,6 +399,7 @@ MonoBehaviour:
   minimumDistanceAway: 1
   maximumDistanceAway: 3
   controller: {fileID: 7973222864748366791}
+  _Animator: {fileID: 0}
 --- !u!114 &1377919714
 MonoBehaviour:
   m_ObjectHideFlags: 0
