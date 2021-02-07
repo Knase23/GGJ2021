@@ -19,7 +19,6 @@ namespace Game.Gameplay.AI
         [Tooltip("Runs Actions, after the AIs Talkers bubble is gone")]
         public List<string> onAiTalkComplete = new List<string>();
         
-        
         // Ai knows how to respond
         public List<BehaviourChange> expectedResponse = new List<BehaviourChange>();
         public BehaviourChange unexpectedResponse = new BehaviourChange();
@@ -43,6 +42,5 @@ namespace Game.Gameplay.AI
             }
             return unexpectedResponse;
         }
-
     }
 }

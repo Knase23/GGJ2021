@@ -3,7 +3,5 @@ using UnityEngine;
 namespace Game.Core
 {
     
-    public class Glyph : ScriptableObject
-    {
-    }
+    public abstract class Glyph : ScriptableObject { }
 }
