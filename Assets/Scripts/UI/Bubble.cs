@@ -39,21 +39,18 @@ namespace Game.UI
         {
             if (gameObject.activeInHierarchy == false)
             {
-                Debug.Log("It was inactive Start",gameObject);
                 gameObject.SetActive(true);
                 gameObject.LeanCancel();
                 completedStart = false;
             }
             if (completedStart == false)
             {
-                Debug.Log("It have not done a InsertBubble",gameObject);
                 transform.localScale = Vector3.zero;
                 gameObject.LeanScale(_defaultsScale, animationInDuration).setEaseOutBack()
                     .setOnComplete(() => OnBubbleStartComplete?.Invoke());
             }
             else
             {
-                Debug.Log("Already been inserted", gameObject);
                 transform.localScale = _defaultsScale;
             }
         }

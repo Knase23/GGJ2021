@@ -1,11 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 namespace Game
 {
     public class GameManager : MonoBehaviour
     {
+        public InputAction ChangeViewMode;
+        public InputAction QuitGameButton;
+        
         private void Awake()
         {
             Screen.SetResolution(960,540,FullScreenMode.Windowed);
@@ -15,20 +19,70 @@ namespace Game
         public void Start()
         {
             // Force Resolution
+#if UNITY_STANDALONE_WIN
             BorderlessWindow.SetFramelessWindow();
+#endif
+            ChangeViewMode.performed += ChangeViewModeOnPerformed;
+            QuitGameButton.performed += QuitGameButtonOnPerformed;
         }
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private void MakeFrameLess()
+        private void QuitGameButtonOnPerformed(InputAction.CallbackContext obj)
         {
-            BorderlessWindow.SetFramelessWindow();
+#if UNITY_STANDALONE
+            if (obj.ReadValueAsButton())
+            {
+                Application.Quit();
+            }
+#endif
         }
+
+        private void ChangeViewModeOnPerformed(InputAction.CallbackContext obj)
+        {
+            if(obj.ReadValueAsButton())
+            {
+                if (Screen.fullScreen)
+                {
+                    Screen.SetResolution(960,540,FullScreenMode.Windowed);
+                }
+                else
+                {
+                    Screen.SetResolution(1920, 1080, FullScreenMode.ExclusiveFullScreen);
+                }
+            }
+        }
+
+        private void OnEnable()
+        {
+            ChangeViewMode.Enable();
+            QuitGameButton.Enable();
+        }
+
+        private void OnDisable()
+        {
+            ChangeViewMode.Disable();
+            QuitGameButton.Enable();
+        }
+
+//         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+//         private void MakeFrameLess()
+//         {
+// #if UNITY_STANDALONE_WIN
+//             
+//             //BorderlessWindow.SetFramelessWindow();
+//             
+// #endif
+//         }
         
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
-        private void SetResolution()
-        {
-            Screen.SetResolution(960,540,FullScreenMode.Windowed);
-        }
+        // [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+        // private void SetResolution()
+        // {
+        //     Screen.SetResolution(960,540,FullScreenMode.Windowed);
+        //     
+        //     // Not relaiable!
+        //     //Invoke(nameof(MakeFrameLess),1f);
+        //     //When MakeFrameLess is executed the resolution of the window so wrong. 
+        //     // It looks like it adds resolution for the missing bar!
+        // }
         
     }
 

@@ -13,8 +13,6 @@ public class TriggerAiTalk : MonoBehaviour
     private void Start()
     {
         talker ??= GetComponent<AIDialogue>();
-        Collider2D = GetComponent<CircleCollider2D>();
-        Collider2D.radius = talker.talkRange - 2;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

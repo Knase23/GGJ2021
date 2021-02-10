@@ -35,11 +35,17 @@ namespace Game.Gameplay.Player
         private bool secondWord;
         private HieroGlyph previousWord;
 
+        private bool talkDone = true;
+
         private void Start()
         {
             previewGlyph = FindObjectOfType<LearnedGlyphPreview>();
             CheatForLearningGlyphsActionReference.action.performed += context => LearnAllGlyphs();
             talkBubble.OnBubbleEnd += SpeeachCompleteCheck;
+            talkBubble.OnBubbleEnd += () =>
+            {
+                talkDone = true;
+            };
         }
 
         private void OnEnable()
@@ -71,6 +77,9 @@ namespace Game.Gameplay.Player
 
         public void Talk(Glyph glyph)
         {
+            if (talkDone == false)
+                return;
+            
             if (glyph is HieroGlyph hieroglyph)
             {
                 latestTalk = hieroglyph;
@@ -85,6 +94,7 @@ namespace Game.Gameplay.Player
                     talkBubble.ShowWords(latestTalk);
                 }
 
+                talkDone = false;
                 DialogueSystem.Talking(this);
                 if (speech != null) speech.Speak();
             }
@@ -122,6 +132,7 @@ namespace Game.Gameplay.Player
 
         public void OnHearing(ITalker talker)
         {
+            Debug.Log($"Player heard: {talker.GetName()} say {talker.GetLatestGlyph()}");
             Glyph glyph = talker.GetLatestGlyph();
 
             //Check if the Talker is someone i want to listen to!
@@ -139,6 +150,7 @@ namespace Game.Gameplay.Player
 
             if (glyph is LogicGlyph logicGlyph)
             {
+                talkDone = true;
                 //Do Logic with it!
                 WaitingForSecondWord(true);
                 talkBubble.OnBubbleStartComplete += SetupSecondWord;
