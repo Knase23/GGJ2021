@@ -63,6 +63,9 @@ namespace Game
             QuitGameButton.Enable();
         }
 
+        
+        
+        
 //         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 //         private void MakeFrameLess()
 //         {

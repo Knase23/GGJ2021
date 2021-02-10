@@ -50,7 +50,10 @@ public class BorderlessWindow
 
     public Vector2Int currentResolution;
 
-
+        //TODO: When the window becomes frameless, the UI Canvases changes size!
+        // This might be do to the viewport becoming a bit taller then it should be!
+        // As the Title Bar of the window is probably included when calculation the resolution!
+    
     // This attribute will make the method execute on game launch, after the Unity Logo Splash Screen.
     //[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void InitializeOnLoad()
